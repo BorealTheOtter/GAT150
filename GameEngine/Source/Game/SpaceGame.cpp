@@ -125,8 +125,7 @@ void SpaceGame::SpawnPlayer()
 	pd.speed = 400.0f;
 	pd.damping = 1.0f;
 
-	Player* player = new Player{ pd };
-	m_scene->AddActor(player);
+	m_scene->AddActor(std::move(std::make_unique<Player>(pd)));
 }
 
 void SpaceGame::SpawnEnemy()
@@ -138,5 +137,5 @@ void SpaceGame::SpawnEnemy()
 	ed.transform = sr::Transform{ sr::Vector2{sr::RandomFloat(sr:: Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y)}, 0, 5 };
 	ed.speed = sr::RandomFloat(200.0f, 300.0f);
 	ed.damping = 1.1f;
-	m_scene->AddActor(new Enemy{ ed });
+	m_scene->AddActor(std::move(std::make_unique<Enemy>(ed)));
 }

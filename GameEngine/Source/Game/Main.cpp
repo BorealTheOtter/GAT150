@@ -6,12 +6,13 @@
 
 #include <fmod.hpp>
 #include <map>
+#include <memory>
 
 using namespace sr;
 
-
 int main()
 {
+
 
     //INITIALIZE
     Engine::Get().Initialize();

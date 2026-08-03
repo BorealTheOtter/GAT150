@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
+#include <memory>
 
 #include "Actor.h"
 
@@ -8,7 +9,7 @@ namespace sr {
 	
 	class Scene {
 	public:
-		void AddActor(Actor* actor);
+		void AddActor(std::unique_ptr<Actor> actor);
 
 		void ClearActors();
 
@@ -25,8 +26,8 @@ namespace sr {
 		void UpdateCollisions();
 		
 	private:
-		std::vector<Actor*> m_actors;
-		std::vector<Actor*> m_pendingActors;
+		std::vector<std::unique_ptr<Actor>> m_actors;
+		std::vector<std::unique_ptr<Actor>> m_pendingActors;
 
 		class Game* m_game = nullptr;
 
@@ -35,9 +36,9 @@ namespace sr {
 	template<typename T>
 	inline T* Scene::GetActorByName(const std::string& name)
 	{
-		for (auto actor : m_actors) 
+		for (auto& actor : m_actors) 
 		{
-			T* actorT = dynamic_cast<T*>(actor);
+			T* actorT = dynamic_cast<T*>(actor.get());
 			if (actorT && actorT->m_name == name) {
 				return actorT;
 			}

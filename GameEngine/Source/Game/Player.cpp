@@ -31,9 +31,7 @@ void Player::Update(float dt, const float width, const float height)
             bd.speed = 800.0f;
             bd.damping = 1.0f;
             bd.lifespan = 3.0f;
-
-            Bullet* bullet = new Bullet(bd);
-            m_scene->AddActor(bullet);
+            m_scene->AddActor(std::move(std::make_unique<Bullet>(bd)));
 
             sr::Engine::Get().GetAudio().PlaySound("shoot");
         }
