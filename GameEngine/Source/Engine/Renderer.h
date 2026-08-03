@@ -1,0 +1,48 @@
+#pragma once
+#include <SDL3/SDL.h>
+#include<SDL3_ttf/SDL_ttf.h>
+#include "Transform.h"
+#include "Model.h"
+#include "Vector3.h"
+
+
+namespace sr
+{
+	class Renderer
+	{
+	public:
+		bool Initialize(const char* name, int width, int height);
+		void Quit() const;
+
+		void Clear() const;
+		void Present() const;
+
+		void SetColor(Uint8 r, Uint8 g, Uint8 b, Uint8 a = 255) const;
+		void SetColor(float r, float g, float b, float a = 1.0f) const;
+		void SetColor(const Vector3& v, float a = 1.0f) const;
+
+		void DrawPoint(float x, float y) const;
+		void DrawFillRect(float x, float y, float width, float height) const; 
+		void DrawRect(float x, float y, float width, float height) const;
+		void DrawLine(float x1, float y1, float x2, float y2) const;
+
+		void DrawModel(const class Model& m, const Transform& t) const;
+		
+		
+		void DebugText(float x, float y, const char* text) const;
+
+		int GetWidth() const { return m_width; }
+		int GetHeight() const { return m_height; }
+		
+
+	private:
+		friend class Text;
+
+		SDL_Window* m_window = nullptr;
+		SDL_Renderer* m_renderer = nullptr;
+
+		int m_width = 0;
+		int m_height = 0;
+	};
+}
+
