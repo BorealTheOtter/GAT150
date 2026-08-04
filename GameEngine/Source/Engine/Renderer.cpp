@@ -120,10 +120,9 @@ namespace sr
             SDL_FRect destRect;
         destRect.x = x;
         destRect.y = y;
-        destRect.w = texture->GetSize().x;
-        destRect.h = texture->GetSize().y;
+        destRect.w = size.x;
+        destRect.h = size.y;
 
-        // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
         SDL_RenderTexture(m_renderer, texture->m_texture, NULL, &destRect);
     }
 
