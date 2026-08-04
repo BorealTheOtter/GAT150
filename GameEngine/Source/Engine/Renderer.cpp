@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Renderer.h"
+#include "Texture.h"
 #include "MathUtils.h"
 #include <SDL3/SDL.h>
 
@@ -110,6 +111,20 @@ namespace sr
             }
 
         }
+    }
+
+    void Renderer::DrawTexture(Texture* texture, float x, float y)
+    {
+        Vector2 size = texture->GetSize();
+
+            SDL_FRect destRect;
+        destRect.x = x;
+        destRect.y = y;
+        destRect.w = texture->GetSize().x;
+        destRect.h = texture->GetSize().y;
+
+        // https://wiki.libsdl.org/SDL3/SDL_RenderTexture
+        SDL_RenderTexture(m_renderer, texture->m_texture, NULL, &destRect);
     }
 
 

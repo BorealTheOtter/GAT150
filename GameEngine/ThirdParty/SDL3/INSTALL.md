@@ -1,19 +1,21 @@
 
 # Using this package
 
-This package contains SDL3_ttf built for Visual Studio.
+This package contains SDL3_image built for Visual Studio.
 
 To use this package, edit your project properties:
 - Add the include directory to "VC++ Directories" -> "Include Directories"
 - Add the lib/_arch_ directory to "VC++ Directories" -> "Library Directories"
-- Add SDL3_ttf.lib to Linker -> Input -> "Additional Dependencies"
-- Copy lib/_arch_/SDL3_ttf.dll to your project directory.
+- Add SDL3_image.lib to Linker -> Input -> "Additional Dependencies"
+- Copy lib/_arch_/SDL3_image.dll to your project directory.
+
+You can include support for additional image formats by including the license and DLL files in the lib/_arch_/optional directory in your application. They will be automatically loaded by SDL_image as needed.
 
 # Documentation
 
 An API reference and additional documentation is available at:
 
-https://wiki.libsdl.org/SDL3_ttf
+https://wiki.libsdl.org/SDL3_image
 
 # Discussions
 

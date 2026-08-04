@@ -1,6 +1,7 @@
 #pragma once
 #include <SDL3/SDL.h>
 #include<SDL3_ttf/SDL_ttf.h>
+#include <SDL3_image/SDL_image.h>
 #include "Transform.h"
 #include "Model.h"
 #include "Vector3.h"
@@ -34,9 +35,11 @@ namespace sr
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
 		
-
+		
+		void DrawTexture(class Texture* texture, float x, float y);
 	private:
 		friend class Text;
+		friend class Texture;
 
 		SDL_Window* m_window = nullptr;
 		SDL_Renderer* m_renderer = nullptr;

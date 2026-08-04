@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 
 #include "Transform.h"
@@ -16,7 +17,7 @@ namespace sr
 		Transform transform{ Vector2{0, 0}, 0, 1 };
 		Vector2 velocity{ 0,0 };
 		float damping = 0.0f;
-		Model model;
+		std::shared_ptr<Model> model;
 		std::string name;
 		std::string tag;
 		float lifespan{ -1.0f };
@@ -27,8 +28,6 @@ namespace sr
 	public:
 		Actor() = default;
 		Actor(const ActorDesc& ad) : m_transform{ ad.transform }, m_velocity{ ad.velocity }, m_model{ ad.model }, m_name{ ad.name }, m_tag{ ad.tag }, m_damping{ ad.damping }, m_lifespan{ ad.lifespan } {};
-		Actor(const Transform& t) : m_transform{ t } {}
-		Actor(const Transform& t, const Model& m) : m_transform{ t }, m_model{ m } {}
 
 		virtual void Update(float dt, const float width, const float height);
 		virtual void Draw(const class Renderer& renderer) const;
@@ -68,7 +67,7 @@ namespace sr
 
 		bool m_destroyed = false;
 
-		Model m_model;
+		std::shared_ptr<Model> m_model;
 		Scene* m_scene = nullptr;
 	};
 }

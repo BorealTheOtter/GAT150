@@ -14,6 +14,7 @@
 #include "File.h"
 #include "Audio.h"
 #include "Text.h"
+#include "Texture.h"
 #include "ParticleSystem.h"
 
 #include "Game.h"
