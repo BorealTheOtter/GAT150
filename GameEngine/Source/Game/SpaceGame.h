@@ -43,11 +43,14 @@ private:
 
 	GameState m_gameState = GameState::Title;
 
-	sr::Font* m_menuFont{ nullptr };
+	sr::res_t<sr::Font> m_menuFont;
+	sr::res_t<sr::Font> m_gameFont;
+
+	//sr::Font* m_menuFont{ nullptr };
 	sr::Text* m_titleText{ nullptr };
 	sr::Text* m_gameOverText{ nullptr };
 	
-	sr::Font* m_gameFont{ nullptr };
+	//sr::Font* m_gameFont{ nullptr };
 	sr::Text* m_scoreText{ nullptr };
 	sr::Text* m_livesText{ nullptr };
 

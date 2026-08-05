@@ -29,13 +29,9 @@ namespace sr {
             return false;
         }
 
-        return true;
-    }
+        //https://wiki.libsdl.org/SDL3/SDL_GetTextureSize
+        SDL_GetTextureSize(m_texture, &m_size.x, &m_size.y);
 
-    Vector2 Texture::GetSize()
-    {
-        Vector2 v;
-        SDL_GetTextureSize(m_texture, &v.x, &v.y);
-        return v;
+        return true;
     }
 }

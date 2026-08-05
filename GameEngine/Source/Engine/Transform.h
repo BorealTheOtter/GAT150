@@ -5,8 +5,8 @@ namespace sr
 {
 	struct Transform
 	{
-		Vector2 pos;
-		float rotation;
-		float scale;
+		Vector2 pos{ 0,0 };
+		float rotation{ 0.0f };
+		float scale{ 1.0f };
 	};
 }

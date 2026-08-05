@@ -16,6 +16,7 @@
 #include "Text.h"
 #include "Texture.h"
 #include "ParticleSystem.h"
+#include "ResourceManager.h"
 
 #include "Game.h"
 
@@ -44,7 +45,7 @@ namespace sr {
 		Engine(const Engine&) = delete;
 		Engine& operator = (const Engine&) = delete;
 	private:
-		Engine(Vector2 v) : m_screen{ v } {}
+		Engine(Vector2 v) : m_screen{ v } {};
 		Engine() = default;
 	private:
 		Input m_input;

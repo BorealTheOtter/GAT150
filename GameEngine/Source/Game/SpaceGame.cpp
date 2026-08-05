@@ -2,7 +2,10 @@
 #include "Player.h"
 #include "Enemy.h"
 #include "Assets.h"
+#include "../Engine/ResourceManager.h"
 #include "../Engine/Engine.h"
+
+#include <memory>
 
 
 
@@ -18,11 +21,8 @@ bool SpaceGame::Initialize()
 	sr::Engine::Get().GetAudio().AddSound("explosion", "Assets/Sounds/snd_badexplosion.wav");
 	sr::Engine::Get().GetAudio().AddSound("shoot", "Assets/Sounds/snd_bomb.wav");
 
-	m_menuFont = new sr::Font();
-	m_menuFont->Load("Assets/Fonts/SairaExtraCondensed-ExtraBold.ttf", 64);
-
-	m_gameFont = new sr::Font();
-	m_gameFont->Load("Assets/Fonts/SairaExtraCondensed-ExtraBold.ttf", 32);
+	m_menuFont = sr::Resources().Get<sr::Font>("Assets/Fonts/menuFont.ttf", 64);
+	m_gameFont = sr::Resources().Get<sr::Font>("Assets/Fonts/gameFont.ttf", 32);
 
 	m_titleText = new sr::Text(m_menuFont);
 	m_titleText->Create(sr::Engine::Get().GetRenderer(), "Space Shooter", sr::Vector3{ 1.0f, 1.0f, 1.0f });

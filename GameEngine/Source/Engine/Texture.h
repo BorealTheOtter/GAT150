@@ -1,5 +1,6 @@
 #pragma once
 #include "Vector2.h"
+#include "Resource.h"
 
 #include <SDL3_image/SDL_image.h>
 #include <string>
@@ -8,7 +9,7 @@
 struct SDL_Texture;
 
 namespace sr {
-	class Texture
+	class Texture : public Resource
 	{
 	public:
 		Texture() = default;
@@ -16,12 +17,13 @@ namespace sr {
 
 		bool Load(const std::string& filename, class Renderer& renderer);
 
-		Vector2 GetSize();
+		const Vector2& GetSize() const { return m_size; }
 
-		
+
 
 	private:
 		friend class Renderer;
 		SDL_Texture* m_texture{ nullptr };
+		Vector2 m_size{ 0,0 };
 	};
 }

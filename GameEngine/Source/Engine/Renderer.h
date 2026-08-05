@@ -36,7 +36,8 @@ namespace sr
 		int GetHeight() const { return m_height; }
 		
 		
-		void DrawTexture(class Texture* texture, float x, float y);
+		void DrawTexture(const class Texture& texture, Vector2 pos);
+		void DrawTexture(const class Texture& texture, Transform t, bool flipH = false);
 	private:
 		friend class Text;
 		friend class Texture;
