@@ -23,11 +23,14 @@ void Player::Update(float dt, const float width, const float height)
         AddVelocity(thrust * dt);
 
         if (sr::Engine::Get().GetInput().GetMousePressed(sr::Engine::Get().GetInput().LEFT)) {
+            sr::Vector2 b_offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rotation * sr::math::DEG_TO_RAD) * 15.0f;
             BulletDesc bd;
             bd.name = "Bullet";
             bd.tag = "PlayerBullet";
-            bd.model = assets::bulletModel;
+            //bd.model = assets::bulletModel;
+            bd.texture = sr::Resources().Get<sr::Texture>("Assets/Images/bullet.png", sr::Engine::Get().GetRenderer());
             bd.transform = m_transform;
+            bd.transform.pos = m_transform.pos + b_offset;
             bd.speed = 800.0f;
             bd.damping = 1.0f;
             bd.lifespan = 3.0f;
@@ -36,8 +39,10 @@ void Player::Update(float dt, const float width, const float height)
             sr::Engine::Get().GetAudio().PlaySound("shoot");
         }
 
+        sr::Vector2 offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rotation * sr::math::DEG_TO_RAD) * -15.0f;
+
             sr::Particle particle;
-            particle.position = m_transform.pos;
+            particle.position = m_transform.pos + offset;
             particle.rotation = m_transform.rotation + sr::RandomFloat(-20.0f, 20.0f);
             particle.color = { sr::RandomFloat(0.9803921569f, 1.0f), sr::RandomFloat(0.1176470588f, 0.9215686275f), 0.1176470588f };
             particle.lifespan = sr::RandomFloat(0.5f, 1.5f);

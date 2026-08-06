@@ -5,6 +5,7 @@
 #include <fmod.hpp>
 #include <map>
 #include <memory>
+#include <random>
 
 using namespace sr;
 
@@ -16,10 +17,6 @@ int main()
     
     SpaceGame game;
     game.Initialize();
-
-    // create texture, using shared_ptr so texture can be shared
-    std::shared_ptr<Texture> texture = std::make_shared<Texture>();
-    texture->Load("Assets/Images/player.png", Engine::Get().GetRenderer());
 
     //MAIN LOOP
     bool quit = false;
@@ -51,9 +48,6 @@ int main()
             game.Draw(Engine::Get().GetRenderer());
 
             Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
-
-            auto texture = Resources().Get<Texture>("Assets/Images/testimg.jpg", Engine::Get().GetRenderer());
-            Engine::Get().GetRenderer().DrawTexture(*texture, Transform{ Vector2{30,30}, 45.0f, 2.0f }, false);
 
             Engine::Get().GetRenderer().Present();
         }

@@ -113,29 +113,18 @@ namespace sr
         }
     }
 
-    void Renderer::DrawTexture(const Texture& texture, Vector2 pos)
-    {
-        Vector2 size = texture.GetSize();
-
-            SDL_FRect destRect;
-        destRect.x = pos.x;
-        destRect.y = pos.y;
-        destRect.w = size.x;
-        destRect.h = size.y;
-
-        //https://wiki.libsdl.org/SDL3/SDL_RenderTexture
-        SDL_RenderTexture(m_renderer, texture.m_texture, NULL, &destRect);
-    }
-
-    void Renderer::DrawTexture(const Texture& texture, Transform t, bool flipH)
+    void Renderer::DrawTexture(const Texture& texture, Transform t, bool flipH) const
     {
         Vector2 size = texture.GetSize();
 
         SDL_FRect destRect;
-        destRect.x = t.pos.x;
-        destRect.y = t.pos.y;
         destRect.w = size.x * t.scale;
         destRect.h = size.y * t.scale;
+
+        destRect.x = t.pos.x - (destRect.w * 0.5f);
+        destRect.y = t.pos.y - (destRect.w * 0.5f);
+
+
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, t.rotation, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);

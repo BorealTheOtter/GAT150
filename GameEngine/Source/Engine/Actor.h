@@ -3,21 +3,24 @@
 #include <string>
 #include <memory>
 
-
 #include "Transform.h"
 #include "Model.h"
+#include "Resource.h"
+
 
 
 namespace sr
 {
 	class Scene;
+	class Texture;
 
 	struct ActorDesc 
 	{
 		Transform transform{ Vector2{0, 0}, 0, 1 };
 		Vector2 velocity{ 0,0 };
 		float damping = 0.0f;
-		std::shared_ptr<Model> model;
+		res_t<Model> model;
+		res_t<Texture> texture;
 		std::string name;
 		std::string tag;
 		float lifespan{ -1.0f };
@@ -27,7 +30,15 @@ namespace sr
 	{
 	public:
 		Actor() = default;
-		Actor(const ActorDesc& ad) : m_transform{ ad.transform }, m_velocity{ ad.velocity }, m_model{ ad.model }, m_name{ ad.name }, m_tag{ ad.tag }, m_damping{ ad.damping }, m_lifespan{ ad.lifespan } {};
+		Actor(const ActorDesc& ad) : 
+			m_transform{ ad.transform }, 
+			m_velocity{ ad.velocity }, 
+			m_model{ ad.model }, 
+			m_name{ ad.name }, 
+			m_tag{ ad.tag }, 
+			m_damping{ ad.damping }, 
+			m_lifespan{ ad.lifespan }, 
+			m_texture{ ad.texture } {};
 
 		virtual void Update(float dt, const float width, const float height);
 		virtual void Draw(const class Renderer& renderer) const;
@@ -67,7 +78,8 @@ namespace sr
 
 		bool m_destroyed = false;
 
-		std::shared_ptr<Model> m_model;
+		res_t<Model> m_model;
+		res_t<Texture> m_texture;
 		Scene* m_scene = nullptr;
 	};
 }

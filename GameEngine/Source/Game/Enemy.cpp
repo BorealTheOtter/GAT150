@@ -51,8 +51,10 @@ void Enemy::Update(float dt, const float width, const float height)
 
     sr::Vector2 vel{ 1,0 };
 
+    sr::Vector2 offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rotation * sr::math::DEG_TO_RAD) * -15.0f;
+
         sr::Particle particle;
-        particle.position = m_transform.pos;
+        particle.position = m_transform.pos + offset;
         particle.rotation = m_transform.rotation + sr::RandomFloat(-20.0f, 20.0f);
         particle.color = { sr::RandomFloat(0.9803921569f, 1.0f), sr::RandomFloat(0.1176470588f, 0.9215686275f), 0.1176470588f };
         particle.lifespan = sr::RandomFloat(0.5f, 1.5f);

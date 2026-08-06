@@ -2,6 +2,7 @@
 #include "Actor.h"
 #include "Renderer.h"
 #include "MathUtils.h"
+#include "Texture.h"
 
 namespace sr
 {
@@ -27,10 +28,16 @@ namespace sr
 		if (m_model) {
 			renderer.DrawModel(*m_model, m_transform);
 		}
+		if (m_texture) {
+			renderer.DrawTexture(*m_texture, m_transform);
+		}
 
 	}
 	float Actor::GetRadius() const
 	{
-			return m_model.get()->GetRadius() * m_transform.scale * 0.6f;
+			if(m_model) return m_model.get()->GetRadius() * m_transform.scale * 0.6f;
+			if (m_texture) return (m_texture->GetSize().Length() * 0.5f) * 0.6f;
+
+			return 0.0f;
 	}
 }

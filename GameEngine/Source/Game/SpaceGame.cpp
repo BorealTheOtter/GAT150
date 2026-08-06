@@ -120,8 +120,9 @@ void SpaceGame::SpawnPlayer()
 	PlayerDesc pd;
 	pd.name = "Player";
 	pd.tag = "Player";
-	pd.model = assets::playerModel;
-	pd.transform = sr::Transform{ sr::Vector2{(float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2)}, 0, 10 };
+	//pd.model = assets::playerModel;
+	pd.texture = sr::Resources().Get<sr::Texture>("Assets/Images/player.png", sr::Engine::Get().GetRenderer());
+	pd.transform = sr::Transform{ sr::Vector2{(float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2)}, 0, 1 };
 	pd.speed = 400.0f;
 	pd.damping = 1.0f;
 
@@ -133,8 +134,9 @@ void SpaceGame::SpawnEnemy()
 	EnemyDesc ed;
 	ed.name = "Enemy";
 	ed.tag = "EnemyShip";
-	ed.model = assets::enemyModel;
-	ed.transform = sr::Transform{ sr::Vector2{sr::RandomFloat(sr:: Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y)}, 0, 5 };
+	//ed.model = assets::enemyModel;
+	ed.texture = sr::Resources().Get<sr::Texture>("Assets/Images/enemy.png", sr::Engine::Get().GetRenderer());
+	ed.transform = sr::Transform{ sr::Vector2{sr::RandomFloat(sr:: Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y)}, 0, 1 };
 	ed.speed = sr::RandomFloat(200.0f, 300.0f);
 	ed.damping = 1.1f;
 	m_scene->AddActor(std::move(std::make_unique<Enemy>(ed)));
