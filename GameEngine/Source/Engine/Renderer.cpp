@@ -122,7 +122,7 @@ namespace sr
         destRect.h = size.y * t.scale;
 
         destRect.x = t.pos.x - (destRect.w * 0.5f);
-        destRect.y = t.pos.y - (destRect.w * 0.5f);
+        destRect.y = t.pos.y - (destRect.h * 0.5f);
 
 
 
