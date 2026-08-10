@@ -12,83 +12,39 @@ using namespace sr;
 
 int main()
 {
+    // load the json data from a file
+    std::string buffer;
+    if (ReadTextFile("Assets/Data/data.json", buffer))
     {
-        //read input file
-        std::ifstream file("Assets/Data/txt.txt");
-        if (file.is_open())
+        // show the contents of the json file (debug)
+        std::cout << buffer << std::endl;
+
+        // create json document from the json file contents
+        rapidjson::Document document;
+        if (json::Load("Assets/Data/data.json", document))
         {
-            std::string str;
-            while (std::getline(file, str)) {
-                std::cout << str << std::endl;
-            }
-            
-        }
-        else {
-            std::cerr << "dumbass spelt the file wrong";
-        }
-        file.close();
-    }
+            // read/show the data from the json file
+            int age;
+            std::string name;
+            float speed;
+            bool isAwake;
+            Vector2 position;
+            Vector3 color;
 
-    {
-        //write output file
-        std::ofstream file("Assets/Data/txt.txt", std::ios::app);
-        if (file.is_open()) {
-            file << "have a good day.\n";
-        }
-    }
+            // read the json data
+            JSON_READ(document, name);
+            JSON_READ(document, age);
+            JSON_READ(document, speed);
+            JSON_READ(document, isAwake);
+            JSON_READ(document, position);
+            JSON_READ(document, color);
 
-    {
-        //read/write
-        std::fstream file("Assets/Data/txt.txt",std::ios::in | std::ios::out | std::ios::app);
-        if (file.is_open()) {
-            file << "add a line.\n";
-            file.seekg(0);
-            std::string str;
-            while (std::getline(file, str)) {
-                std::cout << str << std::endl;
-            }
-
+            // show the data
+            std::cout << name << " " << age << " " << speed << " " << isAwake << std::endl;
+            std::cout << position.x << " " << position.y << std::endl;
+            std::cout << color.r << " " << color.g << " " << color.b << " " << std::endl;
         }
     }
-
-    {
-        std::string name;
-        int score;
-        bool isAlive;
-
-        bool save = false;
-        if (save) 
-        {
-            name = "Boreal";
-            score = 525600;
-            isAlive = true;
-
-            //save game data
-            std::ofstream file("Assets/Data/game.txt", std::ios::trunc);
-            if (file.is_open()) {
-                file << name << "\n" << score << "\n" << isAlive;
-            }
-
-        }
-        bool load = true;
-        if (load) {
-            //load game data
-            std::ifstream file("Assets/Data/game.txt");
-            if (file.is_open()) {
-                std::getline(file, name);
-                std::string str;
-                file >> str;
-                score = std::stoi(str);
-                file >> isAlive;
-            }
-        }
-        //display game data
-        std::cout << name << std::endl;
-        std::cout << score << std::endl;
-        std::cout << isAlive << std::endl;
-    }
-
-    return 0;
 
     //INITIALIZE
     Engine::Get().Initialize();

@@ -17,6 +17,7 @@
 #include "Texture.h"
 #include "ParticleSystem.h"
 #include "ResourceManager.h"
+#include "Json.h"
 
 #include "Game.h"
 
