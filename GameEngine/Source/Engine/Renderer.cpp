@@ -100,8 +100,8 @@ namespace sr
                 v1 *= t.scale;
                 v2 *= t.scale;
 
-                v1 = v1.Rotate(t.rotation * math::DEG_TO_RAD);
-                v2 = v2.Rotate(t.rotation * math::DEG_TO_RAD);
+                v1 = v1.Rotate(t.rot * math::DEG_TO_RAD);
+                v2 = v2.Rotate(t.rot * math::DEG_TO_RAD);
 
 
                 v1 += t.pos;
@@ -127,7 +127,7 @@ namespace sr
 
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated
-        SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, t.rotation, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+        SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, t.rot, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 
 

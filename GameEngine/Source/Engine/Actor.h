@@ -7,6 +7,8 @@
 #include "Model.h"
 #include "Resource.h"
 
+#include "Object.h"
+
 
 
 namespace sr
@@ -26,7 +28,7 @@ namespace sr
 		float lifespan{ -1.0f };
 	};
 
-	class Actor
+	class Actor : public Object
 	{
 	public:
 		Actor() = default;
@@ -34,7 +36,6 @@ namespace sr
 			m_transform{ ad.transform }, 
 			m_velocity{ ad.velocity }, 
 			m_model{ ad.model }, 
-			m_name{ ad.name }, 
 			m_tag{ ad.tag }, 
 			m_damping{ ad.damping }, 
 			m_lifespan{ ad.lifespan }, 
@@ -48,7 +49,7 @@ namespace sr
 		const Transform& GetTransform() const { return m_transform; }
 
 		void SetPosition(const Vector2& pos) { m_transform.pos = pos; }
-		void SetRotation(float rotation) { m_transform.rotation = rotation; }
+		void SetRotation(float rotation) { m_transform.rot = rotation; }
 		void SetScale(float scale) { m_transform.scale = scale; }
 
 		const Vector2& GetVelocity() const { return m_velocity; }
@@ -65,10 +66,11 @@ namespace sr
 		void SetDestroyed(bool destroy = true) { m_destroyed = destroy; }
 		bool GetDestroyed() const { return m_destroyed; }
 
+		virtual void Read(const json::value_t& value) override;
+
 		friend Scene;
 
 	protected:
-		std::string m_name;
 		std::string m_tag;
 
 		Transform m_transform;

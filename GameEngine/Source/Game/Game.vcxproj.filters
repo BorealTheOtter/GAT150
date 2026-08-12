@@ -8,6 +8,9 @@
     <Filter Include="Header Files">
       <UniqueIdentifier>{6e7b9649-b49a-4070-bf69-0ccc41e7c859}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{af5219e3-9e5a-4595-befb-2fbcfb2e715f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -45,5 +48,10 @@
     <ClInclude Include="SpaceGame.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\..\Build\Assets\Data\stupid.json">
+      <Filter>Resource Files</Filter>
+    </None>
   </ItemGroup>
 </Project>

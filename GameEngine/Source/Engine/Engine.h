@@ -5,6 +5,7 @@
 #include "Random.h"
 #include "MathUtils.h"
 #include "Transform.h"
+#include "StringUtils.h"
 
 #include "Input.h"
 #include "Renderer.h"
@@ -18,6 +19,7 @@
 #include "ParticleSystem.h"
 #include "ResourceManager.h"
 #include "Json.h"
+#include "Factory.h"
 
 #include "Game.h"
 

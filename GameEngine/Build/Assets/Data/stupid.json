@@ -1,0 +1,14 @@
+{
+  "name": "Silas R",
+  "tag": "Ship",
+  "lifespan": 80.0,
+  "transform": {
+    "pos": [ 0, 0 ],
+    "rot": 69.0,
+    "scale": 1.0
+  },
+  "velocity": [ 0, 0 ],
+  "damping": 0.0,
+  "active": true
+
+}

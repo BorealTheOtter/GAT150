@@ -65,6 +65,12 @@ void SpaceGame::Update(float dt, float width, float height){
 			m_spawnTimer = m_spawnTime;
 			m_spawnTime -= 0.05f;
 		}
+
+		if (sr::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_Y)) {
+			for (int i = 0; i < 1000; ++i) {
+				SpawnEnemy();
+			}
+		}
 		break;
 	case SpaceGame::GameState::Dead:
 		OnPlayerDead();
@@ -120,7 +126,6 @@ void SpaceGame::SpawnPlayer()
 	PlayerDesc pd;
 	pd.name = "Player";
 	pd.tag = "Player";
-	//pd.model = assets::playerModel;
 	pd.texture = sr::Resources().Get<sr::Texture>("Assets/Images/player.png", sr::Engine::Get().GetRenderer());
 	pd.transform = sr::Transform{ sr::Vector2{(float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2)}, 0, 1 };
 	pd.speed = 400.0f;
@@ -134,7 +139,6 @@ void SpaceGame::SpawnEnemy()
 	EnemyDesc ed;
 	ed.name = "Enemy";
 	ed.tag = "EnemyShip";
-	//ed.model = assets::enemyModel;
 	ed.texture = sr::Resources().Get<sr::Texture>("Assets/Images/enemy.png", sr::Engine::Get().GetRenderer());
 	ed.transform = sr::Transform{ sr::Vector2{sr::RandomFloat(sr:: Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y)}, 0, 1 };
 	ed.speed = sr::RandomFloat(200.0f, 300.0f);

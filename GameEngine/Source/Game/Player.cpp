@@ -23,7 +23,7 @@ void Player::Update(float dt, const float width, const float height)
         AddVelocity(thrust * dt);
 
         if (sr::Engine::Get().GetInput().GetMousePressed(sr::Engine::Get().GetInput().LEFT)) {
-            sr::Vector2 b_offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rotation * sr::math::DEG_TO_RAD) * 15.0f;
+            sr::Vector2 b_offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * 15.0f;
             BulletDesc bd;
             bd.name = "Bullet";
             bd.tag = "PlayerBullet";
@@ -39,11 +39,11 @@ void Player::Update(float dt, const float width, const float height)
             sr::Engine::Get().GetAudio().PlaySound("shoot");
         }
 
-        sr::Vector2 offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rotation * sr::math::DEG_TO_RAD) * -15.0f;
+        sr::Vector2 offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * -15.0f;
 
             sr::Particle particle;
             particle.position = m_transform.pos + offset;
-            particle.rotation = m_transform.rotation + sr::RandomFloat(-20.0f, 20.0f);
+            particle.rotation = m_transform.rot + sr::RandomFloat(-20.0f, 20.0f);
             particle.color = { sr::RandomFloat(0.9803921569f, 1.0f), sr::RandomFloat(0.1176470588f, 0.9215686275f), 0.1176470588f };
             particle.lifespan = sr::RandomFloat(0.5f, 1.5f);
             particle.active = true;
@@ -75,4 +75,10 @@ void Player::OnCollision(Actor* other) {
         sr::Engine::Get().GetAudio().PlaySound("explosion");
         ((SpaceGame*)m_scene->GetGame())->SetGameState(SpaceGame::GameState::Dead);
     }
+}
+
+void Player::Read(const sr::json::value_t& value)
+{
+    Actor::Read(value);
+    JSON_READ_NAME(value, "speed", m_speed);
 }
