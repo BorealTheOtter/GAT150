@@ -1,14 +1,49 @@
 {
-  "name": "Silas R",
-  "tag": "Ship",
-  "lifespan": 80.0,
-  "transform": {
-    "pos": [ 0, 0 ],
-    "rot": 69.0,
-    "scale": 1.0
-  },
-  "velocity": [ 0, 0 ],
-  "damping": 0.0,
-  "active": true
-
-}
+  "actors": [
+    {
+      "name": "Proto_Player",
+      "type": "Player",
+      "tag": "Player",
+      "lifespan": -1.0,
+      "transform": {
+        "pos": [ 100, 100 ],
+        "rot": 0.0,
+        "scale": 1.0
+      },
+      "damping": 1.0,
+      "speed": 400.0,
+      "active": true,
+      "texture": "Assets/Images/player.png"
+    },
+    {
+      "name": "Proto_Enemy",
+      "type": "Enemy",
+      "tag": "EnemyShip",
+      "lifespan": -1.0,
+      "transform": {
+        "pos": [ 500, 500 ],
+        "rot": 0.0,
+        "scale": 1.0
+      },
+      "damping": 1.1,
+      "speed": 300.0,
+      "active": true,
+      "texture": "Assets/Images/enemy.png"
+    },
+    {
+      "name": "Proto_Bullet",
+      "type": "Bullet",
+      "tag": "PlayerBullet",
+      "lifespan": 3.0,
+      "transform": {
+        "pos": [ 500, 500 ],
+        "rot": 0.0,
+        "scale": 1.0
+      },
+      "damping": 1.0,
+      "speed": 800.0,
+      "active": true,
+      "texture": "Assets/Images/bullet.png"
+    }
+  ]
+  }

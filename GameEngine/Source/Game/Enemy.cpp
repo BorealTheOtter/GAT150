@@ -32,7 +32,7 @@ void Enemy::OnCollision(Actor* other)
 
 void Enemy::Update(float dt, const float width, const float height)
 {
-    Player* player = m_scene->GetActorByName<Player>("Player");
+    Player* player = m_scene->GetActorByTag<Player>("Player");
     if (player) 
     {
         sr::Vector2 direction = player->GetTransform().pos - m_transform.pos;

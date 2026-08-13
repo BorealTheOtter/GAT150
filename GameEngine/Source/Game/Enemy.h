@@ -11,6 +11,8 @@ public:
 	Enemy() = default;
 	Enemy(EnemyDesc ed) :Actor{ ed }, m_speed{ ed.speed } {};
 
+	CLASS_PROTOTYPE(Enemy);
+
 	void OnCollision(Actor* other) override;
 
 	void Update(float dt, const float width, const float height) override;

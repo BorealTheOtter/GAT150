@@ -18,9 +18,25 @@ namespace sr {
 
     template <typename T>
         requires std::derived_from<T,Object>
+
     class Creator : public ICreator {
     public:
         std::unique_ptr<Object> Create() override { return std::make_unique<T>(); }
+    };
+
+    template <typename T>
+        requires std::derived_from<T,Object>
+
+    class ProtoCreator : public ICreator {
+    public:
+        ProtoCreator(std::unique_ptr<Object> prototype) : m_prototype{ std::move(prototype) } {}
+
+        std::unique_ptr<Object> Create() override { 
+            return m_prototype->Clone(); 
+        }
+
+    private:
+        std::unique_ptr<Object> m_prototype;
     };
 
     class Factory: public Singleton<Factory>{
@@ -28,6 +44,10 @@ namespace sr {
         template <typename T>
             requires std::derived_from<T, Object>
         void Register(const std::string& name);
+
+        template <typename T>
+            requires std::derived_from<T, Object>
+        void RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype);
 
         template <typename T = class Object>
             requires std::derived_from<T, Object>
@@ -47,6 +67,18 @@ namespace sr {
             std::cerr << "Object already registered: " << l_name << std::endl;
         }
         m_registry[l_name] = std::make_unique<Creator<T>>();
+    }
+
+    template<typename T>
+        requires std::derived_from<T, Object>
+    inline void Factory::RegisterPrototype(const std::string& name, std::unique_ptr<T> prototype)
+    {
+        std::string l_name = ToLower(name);
+        if (m_registry.contains(l_name))
+        {
+            std::cerr << "Object already registered: " << l_name << std::endl;
+        }
+        m_registry[l_name] = std::make_unique<ProtoCreator<T>>(std::move(prototype));
     }
 
 

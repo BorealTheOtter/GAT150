@@ -10,3 +10,9 @@ void Bullet::Update(float dt, const float width, const float height)
 
 	Actor::Update(dt, width, height);
 }
+
+void Bullet::Read(const sr::json::value_t& value)
+	{
+		Actor::Read(value);
+		JSON_READ_NAME(value, "speed", m_speed);
+	}

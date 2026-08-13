@@ -18,7 +18,7 @@ namespace sr
 
 	struct ActorDesc 
 	{
-		Transform transform{ Vector2{0, 0}, 0, 1 };
+		Transform transform{ Vector2{0, 0}, 0.0, 1.0 };
 		Vector2 velocity{ 0,0 };
 		float damping = 0.0f;
 		res_t<Model> model;
@@ -40,6 +40,8 @@ namespace sr
 			m_damping{ ad.damping }, 
 			m_lifespan{ ad.lifespan }, 
 			m_texture{ ad.texture } {};
+
+		CLASS_PROTOTYPE(Actor);
 
 		virtual void Update(float dt, const float width, const float height);
 		virtual void Draw(const class Renderer& renderer) const;

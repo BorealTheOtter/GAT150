@@ -3,6 +3,7 @@
 #include "Renderer.h"
 #include "MathUtils.h"
 #include "Texture.h"
+#include "Engine.h"
 
 namespace sr
 {
@@ -43,16 +44,20 @@ namespace sr
 	void Actor::Read(const json::value_t& value)
 	{
 		Object::Read(value);
+		
+		std::string textureName;
+		JSON_READ_NAME(value, "texture", textureName);
+		
+		if (!textureName.empty()) {
+			m_texture = Resources().Get<Texture>(textureName, Engine::Get().GetRenderer());
+		}
 		JSON_READ_NAME(value, "tag", m_tag);
 		JSON_READ_NAME(value, "lifespan", m_lifespan);
-		JSON_READ_NAME(value, "velocity", m_velocity);
 		JSON_READ_NAME(value, "damping", m_damping);
-
-
 
 		if (JSON_HAS_NAME(value, "transform")) {
 		m_transform.Read(JSON_GET_NAME(value, "transform"));
-	}
+		}
 
 	}
 }

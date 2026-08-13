@@ -5,6 +5,8 @@
 #include "../Engine/ResourceManager.h"
 #include "../Engine/Engine.h"
 
+#include "../Engine/Json.h"
+
 #include <memory>
 
 
@@ -17,6 +19,16 @@ bool SpaceGame::Initialize()
 
 	m_scene = new sr::Scene();
 	m_scene->SetGame(this);
+
+	sr::json::document_t document;
+	if (sr::json::Load("Assets/Data/stupid.json", document)) {
+		auto p_player = sr::Factory::Instance().Create<Player>("Player");
+	    p_player->Read(document);
+	   sr::Factory::Instance().RegisterPrototype<Player>("Proto_Player", std::move(p_player));
+	}
+	else {
+	    return -5;
+	}
 
 	sr::Engine::Get().GetAudio().AddSound("explosion", "Assets/Sounds/snd_badexplosion.wav");
 	sr::Engine::Get().GetAudio().AddSound("shoot", "Assets/Sounds/snd_bomb.wav");
@@ -123,15 +135,18 @@ void SpaceGame::OnPlayerDead()
 
 void SpaceGame::SpawnPlayer()
 {
-	PlayerDesc pd;
-	pd.name = "Player";
-	pd.tag = "Player";
-	pd.texture = sr::Resources().Get<sr::Texture>("Assets/Images/player.png", sr::Engine::Get().GetRenderer());
-	pd.transform = sr::Transform{ sr::Vector2{(float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2)}, 0, 1 };
-	pd.speed = 400.0f;
-	pd.damping = 1.0f;
+	auto player = sr::Factory::Instance().Create<Player>("Proto_Player");
+	player->SetPosition(sr::Vector2{ (float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2) });
 
-	m_scene->AddActor(std::move(std::make_unique<Player>(pd)));
+	//PlayerDesc pd;
+	//pd.name = "Player";
+	//pd.tag = "Player";
+	//pd.texture = sr::Resources().Get<sr::Texture>("Assets/Images/player.png", sr::Engine::Get().GetRenderer());
+	//pd.transform = sr::Transform{ sr::Vector2{(float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2)}, 0, 1 };
+	//pd.speed = 400.0f;
+	//pd.damping = 1.0f;
+
+	m_scene->AddActor(std::move(player));
 }
 
 void SpaceGame::SpawnEnemy()
