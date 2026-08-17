@@ -9,6 +9,16 @@
 #include "Singleton.h"
 #include "StringUtils.h"
 
+#define FACTORY_REGISTER(classname)		\
+	class Register##classname			\
+	{									\
+	public:								\
+			Register##classname(){		\
+				sr::Factory::Instance().Register<classname>(#classname);	\
+			}							\
+	};									\
+		static Register##classname registerInstance; \
+
 namespace sr {
     class ICreator {
     public:
@@ -66,6 +76,9 @@ namespace sr {
         {
             std::cerr << "Object already registered: " << l_name << std::endl;
         }
+
+        std::cout << "Object registered: " << name << std::endl;
+
         m_registry[l_name] = std::make_unique<Creator<T>>();
     }
 

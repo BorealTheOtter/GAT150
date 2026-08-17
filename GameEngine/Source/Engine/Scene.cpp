@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Scene.h"
+#include "Factory.h"
 
 namespace sr {
 	
@@ -42,6 +43,45 @@ namespace sr {
 
 
 	}
+	bool Scene::Load(const std::string sceneName)
+	{
+		sr::json::document_t document;
+		if (sr::json::Load(sceneName, document)) {
+			if (JSON_HAS_NAME(document, "actors")) {
+				for (auto& actorValue : JSON_GET_NAME(document, "actors").GetArray()) {
+					std::string typeName;
+					JSON_READ_NAME(actorValue, "type", typeName);
+
+					auto actor = sr::Factory::Instance().Create<Actor>(typeName);
+					actor->Read(actorValue);
+
+					bool prototype = false;
+					JSON_READ(actorValue, prototype);
+
+			
+
+					if (prototype) {
+						std::string name;
+						JSON_READ(actorValue, name);
+						sr::Factory::Instance().RegisterPrototype<Actor>(name, std::move(actor));
+					}
+					else {
+						AddActor(std::move(actor));
+					}
+				}
+			}
+
+			//auto p_player = sr::Factory::Instance().Create<Player>("Player");
+			//p_player->Read(document);
+			//sr::Factory::Instance().RegisterPrototype<Player>("Proto_Player", std::move(p_player));
+		}
+		else {
+			return false;
+		}
+		return true;
+	}
+
+
 	void Scene::UpdateCollisions()
 	{
 		for (auto& actorA : m_actors) {

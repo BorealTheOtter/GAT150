@@ -26,7 +26,7 @@ namespace sr {
 		void SetGame(class Game* game) { m_game = game; }
 		class Game* GetGame() { return m_game; }
 
-
+		bool Load(const std::string sceneName);
 
 	private:
 		void UpdateCollisions();

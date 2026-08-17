@@ -4,6 +4,7 @@
       "name": "Proto_Player",
       "type": "Player",
       "tag": "Player",
+      "prototype": true,
       "lifespan": -1.0,
       "transform": {
         "pos": [ 100, 100 ],
@@ -13,11 +14,17 @@
       "damping": 1.0,
       "speed": 400.0,
       "active": true,
-      "texture": "Assets/Images/player.png"
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/player.png"
+        }
+      ]
     },
     {
       "name": "Proto_Enemy",
       "type": "Enemy",
+      "prototype": true,
       "tag": "EnemyShip",
       "lifespan": -1.0,
       "transform": {
@@ -33,6 +40,7 @@
     {
       "name": "Proto_Bullet",
       "type": "Bullet",
+      "prototype": true,
       "tag": "PlayerBullet",
       "lifespan": 3.0,
       "transform": {

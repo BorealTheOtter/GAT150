@@ -93,7 +93,7 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\SDL3\include;$(SolutionDir)ThirdParty\fmod\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\SDL3\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -108,6 +108,7 @@
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/WHOLEARCHIVE %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -119,7 +120,7 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\SDL3\include;$(SolutionDir)ThirdParty\fmod\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\SDL3\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -134,6 +135,7 @@
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/WHOLEARCHIVE %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -143,7 +145,7 @@
       <PreprocessorDefinitions>_DEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\SDL3\include;$(SolutionDir)ThirdParty\fmod\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\SDL3\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -158,6 +160,7 @@
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/WHOLEARCHIVE %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -169,7 +172,7 @@
       <PreprocessorDefinitions>NDEBUG;_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
-      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\SDL3\include;$(SolutionDir)ThirdParty\fmod\core\inc</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SolutionDir)ThirdParty\rapidjson\include;$(SolutionDir)ThirdParty\SDL3\include;$(SolutionDir)ThirdParty\fmod\core\inc;$(SolutionDir)Source\Engine</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>
@@ -184,11 +187,13 @@
     </Lib>
     <Lib>
       <AdditionalLibraryDirectories>$(SolutionDir)ThirdParty\fmod\core\lib\$(PlatformTarget)</AdditionalLibraryDirectories>
+      <AdditionalOptions>/WHOLEARCHIVE %(AdditionalOptions)</AdditionalOptions>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Actor.cpp" />
     <ClCompile Include="Audio.cpp" />
+    <ClCompile Include="Components\SpriteRendererComponent.cpp" />
     <ClCompile Include="Engine.cpp" />
     <ClCompile Include="EngineTime.cpp" />
     <ClCompile Include="File.cpp" />
@@ -208,6 +213,9 @@
   <ItemGroup>
     <ClInclude Include="Actor.h" />
     <ClInclude Include="Audio.h" />
+    <ClInclude Include="Component.h" />
+    <ClInclude Include="Components\RendererComponent.h" />
+    <ClInclude Include="Components\SpriteRendererComponent.h" />
     <ClInclude Include="EngineTime.h" />
     <ClInclude Include="Factory.h" />
     <ClInclude Include="File.h" />

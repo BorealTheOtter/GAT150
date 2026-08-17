@@ -15,6 +15,8 @@ public:
 
 	void OnCollision(Actor* other) override;
 
+	void SetSpeed(float speed) { m_speed = speed; }
+
 	void Update(float dt, const float width, const float height) override;
 
 	void Read(const sr::json::value_t& value) override;

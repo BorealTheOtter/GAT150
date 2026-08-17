@@ -17,37 +17,9 @@ using namespace sr;
 int main()
 {
 
-    Factory::Instance().Register<Actor>("Actor");
-    Factory::Instance().Register<Object>("Object");
     Factory::Instance().Register<Player>("Player");
     Factory::Instance().Register<Enemy>("Enemy");
     Factory::Instance().Register<Bullet>("Bullet");
-
-
-
-    //Factory::Instance().Register<Actor>("Actor");
-    //auto actor = Factory::Instance().Create<Actor>("Actor");
-
-    //Factory::Instance().Register<Object>("Object");
-    //auto object = Factory::Instance().Create<Object>("Object");
-
-    //std::cout << actor->IsActive() << std::endl;
-    //std::cout << object->IsActive() << std::endl;
-
-    //json::document_t document;
-    //if (json::Load("Assets/Data/stupid.json", document)) {
-    //    actor->Read(document);
-    //    std::cout << actor->GetName() << std::endl;
-    //    std::cout << actor->GetTag() << std::endl;
-    //}
-    //else {
-    //    return -525600;
-    //}
-
-    //std::cout << actor->GetTransform().rot << std::endl;
-  
-
-    //return 0;
 
     //INITIALIZE
     Engine::Get().Initialize();
