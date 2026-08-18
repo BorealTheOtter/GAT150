@@ -43,6 +43,8 @@ namespace sr
 			m_lifespan{ ad.lifespan }, 
 			m_texture{ ad.texture } {};
 
+		Actor(const Actor& other);
+
 		CLASS_PROTOTYPE(Actor);
 
 		virtual void Update(float dt, const float width, const float height);
@@ -72,6 +74,8 @@ namespace sr
 
 		virtual void Read(const json::value_t& value) override;
 
+		void AddComponent(std::unique_ptr<Component> component);
+
 		friend Scene;
 
 	protected:
@@ -87,7 +91,7 @@ namespace sr
 		res_t<Model> m_model;
 		res_t<Texture> m_texture;
 
-		std::vector<Component*> m_components;
+		std::vector<res_t<Component>> m_components;
 
 		Scene* m_scene = nullptr;
 	};

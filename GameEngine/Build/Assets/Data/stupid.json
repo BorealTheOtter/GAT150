@@ -35,7 +35,12 @@
       "damping": 1.1,
       "speed": 300.0,
       "active": true,
-      "texture": "Assets/Images/enemy.png"
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/enemy.png"
+        }
+      ]
     },
     {
       "name": "Proto_Bullet",
@@ -51,7 +56,12 @@
       "damping": 1.0,
       "speed": 800.0,
       "active": true,
-      "texture": "Assets/Images/bullet.png"
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/bullet.png"
+        }
+      ]
     }
   ]
   }

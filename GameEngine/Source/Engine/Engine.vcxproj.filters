@@ -165,5 +165,11 @@
     <ClInclude Include="Components\SpriteRendererComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
+    <ClInclude Include="CircleColliderComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ColliderComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

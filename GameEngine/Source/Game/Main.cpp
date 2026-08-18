@@ -12,6 +12,8 @@
 #include "Enemy.h"
 #include "Bullet.h"
 
+#include "../Engine/Components/SpriteRendererComponent.h"
+
 using namespace sr;
 
 int main()
@@ -20,6 +22,10 @@ int main()
     Factory::Instance().Register<Player>("Player");
     Factory::Instance().Register<Enemy>("Enemy");
     Factory::Instance().Register<Bullet>("Bullet");
+    
+    Factory::Instance().Register<SpriteRendererComponent>("SpriteRendererComponent");
+
+    
 
     //INITIALIZE
     Engine::Get().Initialize();

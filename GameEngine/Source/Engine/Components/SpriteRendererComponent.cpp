@@ -11,7 +11,7 @@ namespace sr {
 
 	void SpriteRendererComponent::Read(const json::value_t& value){
 		
-		Object::Read(value);
+		RendererComponent::Read(value);
 
 		std::string textureName;
 		JSON_READ_NAME(value, "texture", textureName);
