@@ -104,7 +104,7 @@ namespace sr
 		}
 
 	}
-	void Actor::AddComponent(std::unique_ptr<Component> component)
+	void Actor::AddComponent(res_t<Component> component)
 	{
 		component->SetOwner(this);
 		m_components.push_back(std::move(component));

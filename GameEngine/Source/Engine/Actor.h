@@ -7,7 +7,7 @@
 #include "Model.h"
 #include "Resource.h"
 
-#include "Component.h"
+#include "Components/Component.h"
 
 #include "Object.h"
 
@@ -53,6 +53,7 @@ namespace sr
 		virtual void OnCollision(Actor* other) {}
 
 		const Transform& GetTransform() const { return m_transform; }
+		void SetTransform(const sr::Transform& transform) { m_transform = transform; }
 
 		void SetPosition(const Vector2& pos) { m_transform.pos = pos; }
 		void SetRotation(float rotation) { m_transform.rot = rotation; }
@@ -74,7 +75,10 @@ namespace sr
 
 		virtual void Read(const json::value_t& value) override;
 
-		void AddComponent(std::unique_ptr<Component> component);
+		void AddComponent(res_t<Component> component);
+
+		template<std::derived_from<Component> T>
+		T* GetComponent();
 
 		friend Scene;
 
@@ -95,4 +99,16 @@ namespace sr
 
 		Scene* m_scene = nullptr;
 	};
+
+	template<std::derived_from<Component> T>
+	inline T* Actor::GetComponent()
+	{
+		for (auto component : m_components) {
+			auto result = dynamic_cast<T*>(component.get());
+			if (result) {
+				return result;
+			}
+		}
+		return nullptr;
+	}
 }

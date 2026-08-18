@@ -18,12 +18,10 @@ using namespace sr;
 
 int main()
 {
-
-    Factory::Instance().Register<Player>("Player");
-    Factory::Instance().Register<Enemy>("Enemy");
-    Factory::Instance().Register<Bullet>("Bullet");
     
+    //my FACTORY_REGISTER macro doesn't work so I have to manually register them.
     Factory::Instance().Register<SpriteRendererComponent>("SpriteRendererComponent");
+    Factory::Instance().Register<SpriteRendererComponent>("CircleColliderComponent");
 
     
 

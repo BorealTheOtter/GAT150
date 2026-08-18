@@ -2,6 +2,8 @@
 #include "Scene.h"
 #include "Factory.h"
 
+#include "Components/ColliderComponent.h"
+
 namespace sr {
 	
 	void Scene::AddActor(std::unique_ptr<Actor> actor) {
@@ -87,9 +89,13 @@ namespace sr {
 		for (auto& actorA : m_actors) {
 			for (auto& actorB : m_actors) {
 				if (actorA == actorB || actorA->m_destroyed || actorB->m_destroyed) continue;
-				
-				float distance = (actorA->GetTransform().pos - actorB->GetTransform().pos).Length();
-				if (distance <= actorA->GetRadius() + actorB->GetRadius()) {
+
+				auto colliderA = actorA->GetComponent<ColliderComponent>();
+				auto colliderB = actorB->GetComponent<ColliderComponent>();
+
+				if (!colliderA || !colliderB) continue;
+
+				if (colliderA->CheckCollision(*colliderB)) {
 					actorA->OnCollision(actorB.get());
 					actorB->OnCollision(actorA.get());
 				}

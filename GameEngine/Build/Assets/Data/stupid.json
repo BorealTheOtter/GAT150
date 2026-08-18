@@ -18,6 +18,10 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/Images/player.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 23.5
         }
       ]
     },
@@ -39,6 +43,10 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/Images/enemy.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 21.5
         }
       ]
     },
@@ -60,6 +68,10 @@
         {
           "type": "SpriteRendererComponent",
           "texture": "Assets/Images/bullet.png"
+        },
+        {
+          "type": "CircleColliderComponent",
+          "radius": 11.5
         }
       ]
     }

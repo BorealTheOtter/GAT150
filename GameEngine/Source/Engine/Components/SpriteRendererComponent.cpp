@@ -6,7 +6,10 @@ namespace sr {
 	FACTORY_REGISTER(SpriteRendererComponent);
 
 	void SpriteRendererComponent::Draw(const Renderer& renderer){
-		renderer.DrawTexture(*m_texture, GetOwner()->GetTransform());
+		
+		if (m_texture) {
+			renderer.DrawTexture(*m_texture, GetOwner()->GetTransform());
+		}
 	}
 
 	void SpriteRendererComponent::Read(const json::value_t& value){

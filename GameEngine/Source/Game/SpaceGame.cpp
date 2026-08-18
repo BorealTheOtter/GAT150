@@ -1,6 +1,7 @@
 #include "SpaceGame.h"
 #include "Player.h"
 #include "Enemy.h"
+#include "Bullet.h"
 #include "Assets.h"
 #include "../Engine/ResourceManager.h"
 #include "../Engine/Engine.h"
@@ -14,6 +15,10 @@
 bool SpaceGame::Initialize()
 {
 	Game::Initialize();
+
+	sr::Factory::Instance().Register<Player>("Player");
+	sr::Factory::Instance().Register<Enemy>("Enemy");
+	sr::Factory::Instance().Register<Bullet>("Bullet");
 
 	sr::SetSeed();
 

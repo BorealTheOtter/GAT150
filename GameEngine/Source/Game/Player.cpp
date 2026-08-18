@@ -24,17 +24,11 @@ void Player::Update(float dt, const float width, const float height)
 
         if (sr::Engine::Get().GetInput().GetMousePressed(sr::Engine::Get().GetInput().LEFT)) {
             sr::Vector2 b_offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * 15.0f;
-            BulletDesc bd;
-            bd.name = "Bullet";
-            bd.tag = "PlayerBullet";
-            //bd.model = assets::bulletModel;
-            bd.texture = sr::Resources().Get<sr::Texture>("Assets/Images/bullet.png", sr::Engine::Get().GetRenderer());
-            bd.transform = m_transform;
-            bd.transform.pos = m_transform.pos + b_offset;
-            bd.speed = 800.0f;
-            bd.damping = 1.0f;
-            bd.lifespan = 3.0f;
-            m_scene->AddActor(std::move(std::make_unique<Bullet>(bd)));
+
+            auto bullet = sr::Factory::Instance().Create<Bullet>("Proto_Bullet");
+            bullet->SetTransform(m_transform);
+            bullet->SetPosition(bullet->GetTransform().pos + b_offset);
+            m_scene->AddActor(std::move(bullet));
 
             sr::Engine::Get().GetAudio().PlaySound("shoot");
         }
