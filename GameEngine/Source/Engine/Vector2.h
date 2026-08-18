@@ -41,6 +41,7 @@ namespace sr
 
 		float LengthSqr() const { return (float)(pow(x, 2) + pow(y, 2)); }
 		float Length() const { return sqrt(LengthSqr()); }
+		float Distance(const Vector2 v) const { return (v - *this).Length(); }
 		Vector2 Normalize() const { return (*this) / Length(); }
 		float Dot(const Vector2& v) const { return (this->x * v.x) + (this->y * v.y); }
 		float Angle() const { return atan2(this->y, this->x); }
