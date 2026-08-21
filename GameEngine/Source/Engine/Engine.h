@@ -20,6 +20,7 @@
 #include "ResourceManager.h"
 #include "Json.h"
 #include "Factory.h"
+#include "Physics/Physics.h"
 
 #include "Game.h"
 
@@ -41,6 +42,7 @@ namespace sr {
 		Time& GetTime() { return m_time; }
 		Audio& GetAudio() { return m_audio; }
 		ParticleSystem& GetPS() { return m_particleSystem; }
+		Physics& GetPhysics() { return m_physics; }
 
 		void SetScreen(const Vector2& v) { m_screen = v; }
 		const Vector2& GetScreen() const { return m_screen; }
@@ -55,6 +57,7 @@ namespace sr {
 		Renderer m_renderer;
 		Audio m_audio;
 		ParticleSystem m_particleSystem;
+		Physics m_physics;
 
 		Time m_time;
 		Vector2 m_screen{ 640,480 };

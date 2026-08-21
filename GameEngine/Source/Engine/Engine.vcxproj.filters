@@ -11,6 +11,9 @@
     <Filter Include="Components">
       <UniqueIdentifier>{4ce0ae16-eccc-4100-8ebd-fd5e7075368b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Physics">
+      <UniqueIdentifier>{c045025d-3b6f-4eb8-a58a-56debc990743}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Engine.cpp">
@@ -69,6 +72,9 @@
     </ClCompile>
     <ClCompile Include="Components\CircleColliderComponent.cpp">
       <Filter>Components</Filter>
+    </ClCompile>
+    <ClCompile Include="Physics\Physics.cpp">
+      <Filter>Physics</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -173,6 +179,9 @@
     </ClInclude>
     <ClInclude Include="Components\Component.h">
       <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Physics\Physics.h">
+      <Filter>Physics</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

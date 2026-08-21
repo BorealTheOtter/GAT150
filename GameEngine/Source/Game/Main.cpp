@@ -12,18 +12,10 @@
 #include "Enemy.h"
 #include "Bullet.h"
 
-#include "../Engine/Components/SpriteRendererComponent.h"
-
 using namespace sr;
 
 int main()
 {
-    
-    //my FACTORY_REGISTER macro doesn't work so I have to manually register them.
-    Factory::Instance().Register<SpriteRendererComponent>("SpriteRendererComponent");
-    Factory::Instance().Register<SpriteRendererComponent>("CircleColliderComponent");
-
-    
 
     //INITIALIZE
     Engine::Get().Initialize();
