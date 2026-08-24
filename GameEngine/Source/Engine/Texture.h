@@ -1,5 +1,5 @@
 #pragma once
-#include "Vector2.h"
+#include "Math/Vector2.h"
 #include "Resource.h"
 
 #include <SDL3_image/SDL_image.h>

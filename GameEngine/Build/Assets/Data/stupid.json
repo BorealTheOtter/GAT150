@@ -1,6 +1,24 @@
 {
   "actors": [
     {
+      "type": "Actor",
+      "prototype": false,
+      "name": "Coin",
+      "tag": "Pickup",
+      "active": true,
+      "transform": {
+        "pos": [ 300, 300 ],
+        "rot": 0.0,
+        "scale": 1.0
+      },
+      "components": [
+        {
+          "type": "SpriteRendererComponent",
+          "texture": "Assets/Images/coin.png"
+        }
+      ]
+    },
+    {
       "name": "Proto_Player",
       "type": "Player",
       "tag": "Player",

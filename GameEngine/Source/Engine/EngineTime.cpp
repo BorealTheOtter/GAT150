@@ -1,8 +1,6 @@
 #include "EngineTime.h"
 #include "pch.h"
 
-#include <SDL3/SDL.h>
-
 namespace sr {
 	Time::Time()
 	{

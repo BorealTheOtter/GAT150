@@ -2,9 +2,9 @@
 #include <SDL3/SDL.h>
 #include<SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
-#include "Transform.h"
+#include "Math/Transform.h"
 #include "Model.h"
-#include "Vector3.h"
+#include "Math/Vector3.h"
 
 
 namespace sr
@@ -36,6 +36,7 @@ namespace sr
 		int GetHeight() const { return m_height; }
 		
 		void DrawTexture(const class Texture& texture, Transform t, bool flipH = false) const;
+		void DrawTexture(const class Texture& texture,const struct Rect& source, Transform t, bool flipH = false) const;
 	private:
 		friend class Text;
 		friend class Texture;

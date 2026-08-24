@@ -1,6 +1,4 @@
 #include "pch.h"
-#include "framework.h"
-#include <iostream>
 #include "Engine.h"
 
 namespace sr {

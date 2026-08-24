@@ -1,10 +1,7 @@
 #include "pch.h"
 #include "Renderer.h"
 #include "Texture.h"
-#include "MathUtils.h"
-#include <SDL3/SDL.h>
-
-#include <iostream>
+#include "Math/MathUtils.h"
 
 namespace sr
 {
@@ -128,6 +125,11 @@ namespace sr
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, t.rot, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+    }
+
+    void Renderer::DrawTexture(const Texture& texture, const Rect& source, Transform t, bool flipH) const
+    {
+    
     }
 
 

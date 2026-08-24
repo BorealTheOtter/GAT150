@@ -1,7 +1,7 @@
 #include "Enemy.h"
 #include "Player.h"
 #include "SpaceGame.h"
-#include "../Engine/Engine.h"
+#include "Engine.h"
 
 void Enemy::OnCollision(Actor* other)
 {

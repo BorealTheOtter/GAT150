@@ -2,16 +2,6 @@
 #include "SpaceGame.h"
 #include "Assets.h"
 
-#include <fmod.hpp>
-#include <map>
-#include <memory>
-#include <random>
-#include <fstream>
-
-#include "Player.h"
-#include "Enemy.h"
-#include "Bullet.h"
-
 using namespace sr;
 
 int main()
