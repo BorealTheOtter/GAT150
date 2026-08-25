@@ -24,7 +24,7 @@ namespace sr {
         if (!m_texture) return false;
 
         JSON_READ_NAME(doc, "columns", m_cols);
-        JSON_READ_NAME(doc, "row", m_rows);
+        JSON_READ_NAME(doc, "rows", m_rows);
         JSON_READ_NAME(doc, "start_frame", m_startFrame);
         JSON_READ_NAME(doc, "total_frames", m_totalFrames);
 

@@ -6,6 +6,8 @@
       "name": "Coin",
       "tag": "Pickup",
       "active": true,
+      "lifespan": -1.0,
+      "damping":  0.0,
       "transform": {
         "pos": [ 300, 300 ],
         "rot": 0.0,
@@ -13,8 +15,10 @@
       },
       "components": [
         {
-          "type": "SpriteRendererComponent",
-          "texture": "Assets/Images/coin.png"
+          "type": "SpriteAnimationRendererComponent",
+          "tex_frames": "Assets/Animations/coin_idle.json",
+          "fps": 15.0,
+          "loop":  true
         }
       ]
     },

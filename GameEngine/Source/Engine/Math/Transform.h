@@ -11,9 +11,9 @@ namespace sr
 		float scale{ 1.0f };
 
 		void Read(const json::value_t& value) {
-			JSON_READ(value, pos);
-			JSON_READ(value, rot);
-			JSON_READ(value, scale);
+			JSON_READ_REQ(value, pos);
+			JSON_READ_REQ(value, rot);
+			JSON_READ_REQ(value, scale);
 
 		}
 	};

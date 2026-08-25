@@ -2,6 +2,7 @@
 #include "Renderer.h"
 #include "Texture.h"
 #include "Math/MathUtils.h"
+#include "Math/Rect.h"
 
 namespace sr
 {
@@ -129,7 +130,21 @@ namespace sr
 
     void Renderer::DrawTexture(const Texture& texture, const Rect& source, Transform t, bool flipH) const
     {
-    
+        SDL_FRect sourceRect;
+        sourceRect.x = source.pos.x;
+        sourceRect.y = source.pos.y;
+        sourceRect.w = source.size.w;
+        sourceRect.h = source.size.h;
+
+        SDL_FRect destRect;
+        destRect.w = source.size.w * t.scale;
+        destRect.h = source.size.h * t.scale;
+
+        destRect.x = t.pos.x - (destRect.w * 0.5f);
+        destRect.y = t.pos.y - (destRect.h * 0.5f);
+
+        // https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated
+        SDL_RenderTextureRotated(m_renderer, texture.m_texture, &sourceRect, &destRect, t.rot, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 
 

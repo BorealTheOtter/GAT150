@@ -8,6 +8,9 @@
 #define JSON_READ(value, data) sr::json::Read(value, #data, data)
 #define JSON_READ_NAME(value,name, data) sr::json::Read(value, name, data)
 
+#define JSON_READ_REQ(value, data) sr::json::Read(value, #data, data, true)
+#define JSON_READ_NAME_REQ(value,name, data) sr::json::Read(value, name, data, true)
+
 #define JSON_HAS(value, data) value.HasMember(#data)
 #define JSON_HAS_NAME(value, name) value.HasMember(name)
 
@@ -23,13 +26,14 @@ namespace sr::json
 	bool Load(const std::string& filename, document_t& document);
 
 	// read json data
-	bool Read(const value_t& value, const std::string& name, int& data);
+	bool Read(const value_t& value, const std::string& name, int& data, bool req = false);
+	bool Read(const value_t& value, const std::string& name, unsigned int& data, bool req = false);
 
 
 
-	bool Read(const value_t& value, const std::string& name, float& data);
-	bool Read(const value_t& value, const std::string& name, bool& data);
-	bool Read(const value_t& value, const std::string& name, std::string& data);
-	bool Read(const value_t& value, const std::string& name, Vector2& data);
-	bool Read(const value_t& value, const std::string& name, Vector3& data);
+	bool Read(const value_t& value, const std::string& name, float& data, bool req = false);
+	bool Read(const value_t& value, const std::string& name, bool& data, bool req = false);
+	bool Read(const value_t& value, const std::string& name, std::string& data, bool req = false);
+	bool Read(const value_t& value, const std::string& name, Vector2& data, bool req = false);
+	bool Read(const value_t& value, const std::string& name, Vector3& data, bool req = false);
 }

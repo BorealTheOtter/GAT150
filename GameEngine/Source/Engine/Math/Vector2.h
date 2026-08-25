@@ -6,7 +6,11 @@
 namespace sr
 {
 	struct Vector2 {
-		float x, y;
+		union
+		{
+			struct { float x, y; };
+			struct { float w, h; };
+		};
 
 		Vector2() = default;
 		Vector2(float x, float y) : x{ x }, y{ y } {}
