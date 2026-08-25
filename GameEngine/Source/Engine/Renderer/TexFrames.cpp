@@ -35,7 +35,7 @@ namespace sr {
 
         Vector2 textureSize = m_texture->GetSize();
 
-        m_cellSize = textureSize / Vector2{ m_cols, m_rows };
+        m_cellSize = textureSize / Vector2{ (float)m_cols, (float)m_rows };
 
         return true;
     }
