@@ -3,24 +3,35 @@
 #include "Assets.h"
 #include "SpaceGame.h"
 #include "Engine.h"
+#include "Components/PhysicsComponent.h"
 
 void Player::Update(float dt, const float width, const float height)
 {
     {
-        sr::Vector2 thrust = { 0.0f, 0.0f };
+        float thrust = 0.0f;
 
-        float drag = 10.0f;
-        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_W)) { thrust.y -= m_speed; };
-        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_S)) { thrust.y += m_speed; };
+    
+        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_W)) { thrust = m_speed; };
+        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_S)) { thrust = -m_speed; };
 
-        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_A)) { thrust.x -= m_speed; };
-        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) { thrust.x += m_speed; };
+        float rotate = 0.0f;
+        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_A)) { rotate = -180.0f; };
+        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) { rotate = 180.0f; };
 
-        sr::Vector2 direction = sr::Engine::Get().GetInput().GetMousePos() - m_transform.pos;
-        float rotation = direction.Angle();
-        SetRotation(rotation * sr::math::RAD_TO_DEG);
+        auto physicsComponent = GetComponent<sr::PhysicsComponent>();
+        if (physicsComponent) {
+            sr::Vector2 forward{ 1,0 };
+            sr::Vector2 force = forward.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * thrust;
+            physicsComponent->ApplyForce(force);
 
-        AddVelocity(thrust * dt);
+            physicsComponent->ApplyTorque(rotate);
+        }
+
+        //sr::Vector2 direction = sr::Engine::Get().GetInput().GetMousePos() - m_transform.pos;
+        //float rotation = direction.Angle();
+        //SetRotation(rotation * sr::math::RAD_TO_DEG);
+
+       // AddVelocity(thrust * dt);
 
         if (sr::Engine::Get().GetInput().GetMousePressed(sr::Engine::Get().GetInput().LEFT)) {
             sr::Vector2 b_offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * 15.0f;

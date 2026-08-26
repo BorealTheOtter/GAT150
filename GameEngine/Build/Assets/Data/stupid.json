@@ -44,6 +44,12 @@
         {
           "type": "CircleColliderComponent",
           "radius": 23.5
+        },
+        {
+          "type": "RigidBodyPhysicsComponent",
+          "damping": 2.0,
+          "angular_damping": 1.0
+
         }
       ]
     },

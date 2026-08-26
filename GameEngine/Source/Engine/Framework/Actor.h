@@ -21,8 +21,8 @@ namespace sr
 	struct ActorDesc 
 	{
 		Transform transform{ Vector2{0, 0}, 0.0, 1.0 };
-		Vector2 velocity{ 0,0 };
-		float damping = 0.0f;
+		//Vector2 velocity{ 0,0 };
+		//float damping = 0.0f;
 		res_t<Model> model;
 		res_t<Texture> texture;
 		std::string name;
@@ -36,10 +36,10 @@ namespace sr
 		Actor() = default;
 		Actor(const ActorDesc& ad) : 
 			m_transform{ ad.transform }, 
-			m_velocity{ ad.velocity }, 
+			//m_velocity{ ad.velocity }, 
 			m_model{ ad.model }, 
 			m_tag{ ad.tag }, 
-			m_damping{ ad.damping }, 
+			//m_damping{ ad.damping }, 
 			m_lifespan{ ad.lifespan }, 
 			m_texture{ ad.texture } {};
 
@@ -59,9 +59,9 @@ namespace sr
 		void SetRotation(float rotation) { m_transform.rot = rotation; }
 		void SetScale(float scale) { m_transform.scale = scale; }
 
-		const Vector2& GetVelocity() const { return m_velocity; }
-		void SetVelocity(const Vector2& velocity) { m_velocity = velocity; }
-		void AddVelocity(const Vector2& velocity) { m_velocity += velocity; }
+		//const Vector2& GetVelocity() const { return m_velocity; }
+		//void SetVelocity(const Vector2& velocity) { m_velocity = velocity; }
+		//void AddVelocity(const Vector2& velocity) { m_velocity += velocity; }
 		
 		const std::string& GetName() const { return m_name; }
 		const std::string& GetTag() const { return m_tag; }
@@ -86,8 +86,8 @@ namespace sr
 		std::string m_tag;
 
 		Transform m_transform;
-		Vector2 m_velocity{ 0,0 };
-		float m_damping = 0.0f;
+		//Vector2 m_velocity{ 0,0 };
+		//float m_damping = 0.0f;
 		float m_lifespan = -1.0f;
 
 		bool m_destroyed = false;

@@ -41,7 +41,7 @@ void Enemy::Update(float dt, const float width, const float height)
 
         sr::Vector2 forward{ 1,0 };
         forward = forward.Rotate(m_transform.rot * sr::math::DEG_TO_RAD);
-        AddVelocity(forward * m_speed * dt);
+        //AddVelocity(forward * m_speed * dt);
     }
 
     float thrust = 0.0f;
@@ -64,7 +64,7 @@ void Enemy::Update(float dt, const float width, const float height)
         sr::Engine::Get().GetPS().AddParticle(particle);
 
     vel = vel.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * thrust;
-    AddVelocity(vel * dt);
+    //AddVelocity(vel * dt);
     Actor::Update(dt, width, height);
 }
 
