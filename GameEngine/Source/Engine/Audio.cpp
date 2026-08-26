@@ -1,3 +1,4 @@
+#include "pch.h"
 #include "Audio.h"
 namespace sr {
 	bool Audio::Initialize()

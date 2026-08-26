@@ -1,5 +1,5 @@
-#include "EngineTime.h"
 #include "pch.h"
+#include "EngineTime.h"
 
 namespace sr {
 	Time::Time()
