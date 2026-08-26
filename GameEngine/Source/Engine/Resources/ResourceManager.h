@@ -1,6 +1,6 @@
 #pragma once
-#include "Singleton.h"
-#include "Resource.h"
+#include "Core/Singleton.h"
+#include "Resources/Resource.h"
 
 #include <concepts>
 #include <string>

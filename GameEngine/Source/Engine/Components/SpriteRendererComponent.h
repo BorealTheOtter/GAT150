@@ -1,6 +1,6 @@
 #pragma once
 #include "RendererComponent.h"
-#include "Texture.h"
+#include "Renderer/Texture.h"
 
 namespace sr {
 	class SpriteRendererComponent : public RendererComponent {

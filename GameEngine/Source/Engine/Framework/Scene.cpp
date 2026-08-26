@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "Scene.h"
-#include "Factory.h"
+#include "Framework/Scene.h"
+#include "Core/Factory.h"
 
 #include "Components/ColliderComponent.h"
 

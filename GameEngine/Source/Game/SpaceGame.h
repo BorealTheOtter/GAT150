@@ -1,6 +1,6 @@
 #pragma once
-#include "../Engine/Game.h"
-#include "../Engine/Text.h"
+#include "Framework/Game.h"
+#include "Renderer/Text.h"
 
 
 class SpaceGame : public sr::Game {

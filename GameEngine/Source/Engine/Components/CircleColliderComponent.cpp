@@ -1,6 +1,6 @@
 #include "pch.h"
 #include "CircleColliderComponent.h"
-#include "Actor.h"
+#include "Framework/Actor.h"
 
 namespace sr {
     FACTORY_REGISTER(CircleColliderComponent);

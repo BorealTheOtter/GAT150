@@ -3,10 +3,10 @@
 #include "Enemy.h"
 #include "Bullet.h"
 #include "Assets.h"
-#include "ResourceManager.h"
+#include "Resources/ResourceManager.h"
 #include "Engine.h"
 
-#include "Json.h"
+#include "Serialization/Json.h"
 
 #include <memory>
 

@@ -1,5 +1,5 @@
 #include "pch.h"
-#include "Input.h"
+#include "Input/Input.h"
 
 namespace sr {
 	bool Input::Initialize()

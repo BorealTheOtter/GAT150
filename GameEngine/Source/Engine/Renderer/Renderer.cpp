@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "Renderer.h"
-#include "Texture.h"
+#include "Renderer/Renderer.h"
+#include "Renderer/Texture.h"
 #include "Math/MathUtils.h"
 #include "Math/Rect.h"
 

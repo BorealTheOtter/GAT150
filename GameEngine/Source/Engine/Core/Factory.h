@@ -5,9 +5,9 @@
 #include <string>
 #include <iostream>
 
-#include "Object.h"
-#include "Singleton.h"
-#include "StringUtils.h"
+#include "Framework/Object.h"
+#include "Core/Singleton.h"
+#include "Core/StringUtils.h"
 
 #define FACTORY_REGISTER(classname)		\
 	class Register##classname			\

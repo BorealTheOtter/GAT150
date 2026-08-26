@@ -3,7 +3,7 @@
 #include<SDL3_ttf/SDL_ttf.h>
 #include <SDL3_image/SDL_image.h>
 #include "Math/Transform.h"
-#include "Model.h"
+#include "Renderer/Model.h"
 #include "Math/Vector3.h"
 
 

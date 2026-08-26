@@ -1,8 +1,8 @@
 #include "pch.h"
 #include "TexFrames.h"
-#include "Json.h"
-#include "ResourceManager.h"
-#include "Texture.h"
+#include "Serialization/Json.h"
+#include "Resources/ResourceManager.h"
+#include "Renderer/Texture.h"
 
 namespace sr {
     bool TexFrames::Load(const std::string& filename, Renderer& renderer)

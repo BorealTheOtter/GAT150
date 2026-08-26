@@ -1,6 +1,6 @@
 #include "pch.h"
-#include "Texture.h"
-#include "Renderer.h"
+#include "Renderer/Texture.h"
+#include "Renderer/Renderer.h"
 
 namespace sr {
     Texture::~Texture()

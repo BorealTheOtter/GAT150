@@ -1,7 +1,7 @@
 #include "pch.h"
-#include "Text.h"
+#include "Renderer/Text.h"
 #include "Math/Vector3.h"
-#include "Renderer.h"
+#include "Renderer/Renderer.h"
 
 namespace sr {
 	Text::~Text() {

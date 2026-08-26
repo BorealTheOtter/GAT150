@@ -4,8 +4,8 @@
 #include <memory>
 
 #include "Math/Transform.h"
-#include "Model.h"
-#include "Resource.h"
+#include "Renderer/Model.h"
+#include "Resources/Resource.h"
 
 #include "Components/Component.h"
 

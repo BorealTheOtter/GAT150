@@ -1,5 +1,5 @@
 #pragma once
-#include "Scene.h"
+#include "Framework/Scene.h"
 
 namespace sr {
 

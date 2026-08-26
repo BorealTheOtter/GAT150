@@ -1,5 +1,5 @@
 #pragma once
-#include "Factory.h"
+#include "Core/Factory.h"
 #include "ColliderComponent.h"
 
 namespace sr {
