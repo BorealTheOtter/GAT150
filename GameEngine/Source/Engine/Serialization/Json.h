@@ -4,6 +4,7 @@
 
 #include <rapidjson/document.h>
 #include <string>
+#include <vector>
 
 #define JSON_READ(value, data) sr::json::Read(value, #data, data)
 #define JSON_READ_NAME(value,name, data) sr::json::Read(value, name, data)
@@ -31,6 +32,7 @@ namespace sr::json
 
 
 
+	bool Read(const value_t& value, const std::string& name, std::vector<int>& data, bool req = false);
 	bool Read(const value_t& value, const std::string& name, float& data, bool req = false);
 	bool Read(const value_t& value, const std::string& name, bool& data, bool req = false);
 	bool Read(const value_t& value, const std::string& name, std::string& data, bool req = false);

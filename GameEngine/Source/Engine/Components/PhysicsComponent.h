@@ -14,8 +14,11 @@ namespace sr
 		virtual void SetAngularVelocity(float angularVelocity) = 0;
 		virtual float GetAngularVelocity() const = 0;
 
-		virtual void SetPosition(const Vector2& position) = 0;
+		virtual void SetPosition(const Vector2& pos) = 0;
 		virtual Vector2 GetPosition() const = 0;
+
+		virtual void SetRotation(const float& rot) = 0;
+		virtual float GetRotation() const = 0;
 
 		virtual void Read(const json::value_t& value);
 

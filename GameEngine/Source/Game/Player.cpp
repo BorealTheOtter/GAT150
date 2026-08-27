@@ -15,8 +15,8 @@ void Player::Update(float dt, const float width, const float height)
         if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_S)) { thrust = -m_speed; };
 
         float rotate = 0.0f;
-        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_A)) { rotate = -180.0f; };
-        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) { rotate = 180.0f; };
+        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_A)) { rotate = -100.0f; };
+        if (sr::Engine::Get().GetInput().GetKeyDown(SDL_SCANCODE_D)) { rotate = 100.0f; };
 
         auto physicsComponent = GetComponent<sr::PhysicsComponent>();
         if (physicsComponent) {
@@ -25,15 +25,14 @@ void Player::Update(float dt, const float width, const float height)
             physicsComponent->ApplyForce(force);
 
             physicsComponent->ApplyTorque(rotate);
+
+            sr::Vector2 position = physicsComponent->GetPosition();
+            position.x = sr::math::Wrap(position.x,0.0f, width);
+            position.y = sr::math::Wrap(position.y,0.0f, height);
+            physicsComponent->SetPosition(position);
         }
 
-        //sr::Vector2 direction = sr::Engine::Get().GetInput().GetMousePos() - m_transform.pos;
-        //float rotation = direction.Angle();
-        //SetRotation(rotation * sr::math::RAD_TO_DEG);
-
-       // AddVelocity(thrust * dt);
-
-        if (sr::Engine::Get().GetInput().GetMousePressed(sr::Engine::Get().GetInput().LEFT)) {
+        if (sr::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {
             sr::Vector2 b_offset = sr::Vector2{ 1.0f, 0.0f }.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * 15.0f;
 
             auto bullet = sr::Factory::Instance().Create<Bullet>("Proto_Bullet");
@@ -64,6 +63,9 @@ void Player::Update(float dt, const float width, const float height)
 }
 
 void Player::OnCollision(Actor* other) {
+    
+    //return; //I am immortal
+    
     if (other->GetTag() == "EnemyShip") {
         SetDestroyed();
         

@@ -41,9 +41,18 @@ namespace sr
 
 		//m_transform.pos += (m_velocity * dt);
 		//m_velocity *= (1.0f / (1.0f + m_damping * dt));
+	}
 
-		m_transform.pos.x = math::Wrap(m_transform.pos.x, 0.0f, width);
-		m_transform.pos.y = math::Wrap(m_transform.pos.y, 0.0f, height);
+	void Actor::Start() {
+		for (auto& c : m_components) {
+			c->Start();
+		}
+	}
+
+	void Actor::OnDestroy() {
+		for (auto& c : m_components) {
+			c->Destroy();
+		}
 	}
 
 	void Actor::Draw(const Renderer& renderer) const {
@@ -77,9 +86,10 @@ namespace sr
 		Object::Read(value);
 		
 		
-		JSON_READ_NAME_REQ(value, "tag", m_tag);
-		JSON_READ_NAME_REQ(value, "lifespan", m_lifespan);
-		//JSON_READ_NAME_REQ(value, "damping", m_damping);
+		JSON_READ_NAME(value, "tag", m_tag);
+		JSON_READ_NAME(value, "lifespan", m_lifespan);
+		JSON_READ_NAME(value, "persistent", m_persistent);
+
 
 		if (JSON_HAS_NAME(value, "transform")) {
 		m_transform.Read(JSON_GET_NAME(value, "transform"));

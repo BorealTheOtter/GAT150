@@ -14,6 +14,9 @@
     <Filter Include="Resource Files\Animations">
       <UniqueIdentifier>{f3b30eb5-3b35-4b30-a291-8a478ddef54d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resource Files\Tilemaps">
+      <UniqueIdentifier>{1b17fa3c-9346-4f5b-b22e-6a4efcbd619b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -61,6 +64,9 @@
     </None>
     <None Include="..\..\Build\Assets\Animations\bomb_explode.json">
       <Filter>Resource Files\Animations</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Tilemaps\world.json">
+      <Filter>Resource Files\Tilemaps</Filter>
     </None>
   </ItemGroup>
 </Project>

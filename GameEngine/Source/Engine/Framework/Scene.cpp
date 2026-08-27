@@ -11,9 +11,9 @@ namespace sr {
 		m_pendingActors.push_back(std::move(actor));
 	}
 
-	void Scene::ClearActors()
+	void Scene::ClearActors(bool force)
 	{
-		m_actors.clear();
+		std::erase_if(m_actors, [force](auto& actor) {return !actor->GetPersistent() || force; });
 	}
 
 	void Scene::Update(float dt,float width, float height)
@@ -23,17 +23,21 @@ namespace sr {
 			actor->Update(dt, width, height);
 		}
 
-		std::erase_if(m_actors, [](auto& actor) {return actor->m_destroyed; });
+		for (auto& actor : m_actors)
+		{
+			if (actor->m_destroyed) actor->OnDestroy();
+		}
 
-		//m_actors.insert(m_actors.end(), m_pendingActors.begin(), m_pendingActors.end());
+		std::erase_if(m_actors, [](auto& actor) {return actor->GetDestroyed(); });
 
 		for (auto& actor : m_pendingActors) {
+			actor->Start();
 			m_actors.push_back(std::move(actor));
 		}
 
 		m_pendingActors.clear();
 
-		UpdateCollisions();
+		//UpdateCollisions();
 	}
 
 	void Scene::Draw(const Renderer& renderer)
@@ -72,10 +76,6 @@ namespace sr {
 					}
 				}
 			}
-
-			//auto p_player = sr::Factory::Instance().Create<Player>("Player");
-			//p_player->Read(document);
-			//sr::Factory::Instance().RegisterPrototype<Player>("Proto_Player", std::move(p_player));
 		}
 		else {
 			return false;

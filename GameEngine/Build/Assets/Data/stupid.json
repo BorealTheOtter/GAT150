@@ -7,7 +7,8 @@
       "tag": "Pickup",
       "active": true,
       "lifespan": -1.0,
-      "damping":  0.0,
+      "persistent": true,
+      "damping": 0.0,
       "transform": {
         "pos": [ 300, 300 ],
         "rot": 0.0,
@@ -18,7 +19,28 @@
           "type": "SpriteAnimationRendererComponent",
           "tex_frames": "Assets/Animations/coin_idle.json",
           "fps": 15.0,
-          "loop":  true
+          "loop": true
+        }
+      ]
+    },
+    {
+      "type": "Actor",
+      "prototype": false,
+      "name": "Tilemap",
+      "tag": "Ground",
+      "active": true,
+      "lifespan": -1.0,
+      "persistent": true,
+      "damping": 0.0,
+      "transform": {
+        "pos": [ 0, 0 ],
+        "rot": 0.0,
+        "scale": 1.0
+      },
+      "components": [
+        {
+          "type": "TilemapComponent",
+          "tilemap_name": "Assets/Tilemaps/world.json"
         }
       ]
     },
@@ -42,14 +64,11 @@
           "texture": "Assets/Images/player.png"
         },
         {
-          "type": "CircleColliderComponent",
-          "radius": 23.5
-        },
-        {
-          "type": "RigidBodyPhysicsComponent",
-          "damping": 2.0,
-          "angular_damping": 1.0
-
+          "type": "Box2DPhysicsComponent",
+          "linear_damping": 1.1,
+          "angular_damping": 7.0,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0.0
         }
       ]
     },
@@ -73,8 +92,11 @@
           "texture": "Assets/Images/enemy.png"
         },
         {
-          "type": "CircleColliderComponent",
-          "radius": 21.5
+          "type": "Box2DPhysicsComponent",
+          "linear_damping": 1.1,
+          "angular_damping": 7.0,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0.0
         }
       ]
     },
@@ -98,8 +120,12 @@
           "texture": "Assets/Images/bullet.png"
         },
         {
-          "type": "CircleColliderComponent",
-          "radius": 11.5
+          "type": "Box2DPhysicsComponent",
+          "linear_damping": 0.0,
+          "angular_damping": 0.0,
+          "size": [ 48, 48 ],
+          "gravity_scale": 0.0,
+          "is_sensor": true
         }
       ]
     }

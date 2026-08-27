@@ -2,6 +2,7 @@
 #include "Player.h"
 #include "SpaceGame.h"
 #include "Engine.h"
+#include "Components/PhysicsComponent.h"
 
 void Enemy::OnCollision(Actor* other)
 {
@@ -36,17 +37,23 @@ void Enemy::Update(float dt, const float width, const float height)
     if (player) 
     {
         sr::Vector2 direction = player->GetTransform().pos - m_transform.pos;
-        float rotation = direction.Angle();
-        SetRotation(rotation * sr::math::RAD_TO_DEG);
+        float rotation = direction.Angle() * sr::math::RAD_TO_DEG;
+        
 
-        sr::Vector2 forward{ 1,0 };
-        forward = forward.Rotate(m_transform.rot * sr::math::DEG_TO_RAD);
-        //AddVelocity(forward * m_speed * dt);
+        auto physicsComponent = GetComponent<sr::PhysicsComponent>();
+        if (physicsComponent) {
+            sr::Vector2 forward{ 1,0 };
+            sr::Vector2 force = forward.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * m_speed;
+            physicsComponent->ApplyForce(force);
+            physicsComponent->SetRotation(rotation);
+
+            sr::Vector2 position = physicsComponent->GetPosition();
+            position.x = sr::math::Wrap(position.x, 0.0f, width);
+            position.y = sr::math::Wrap(position.y, 0.0f, height);
+            physicsComponent->SetPosition(position);
+
+        }
     }
-
-    float thrust = 0.0f;
-
-    float rotate = 0.0f;
 
 
     sr::Vector2 vel{ 1,0 };
@@ -63,7 +70,7 @@ void Enemy::Update(float dt, const float width, const float height)
 
         sr::Engine::Get().GetPS().AddParticle(particle);
 
-    vel = vel.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * thrust;
+    //vel = vel.Rotate(m_transform.rot * sr::math::DEG_TO_RAD) * thrust;
     //AddVelocity(vel * dt);
     Actor::Update(dt, width, height);
 }

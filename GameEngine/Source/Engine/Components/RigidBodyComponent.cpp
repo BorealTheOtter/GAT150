@@ -55,11 +55,23 @@ namespace sr {
 		return GetOwner()->GetTransform().pos;
 	}
 
+	void RigidBodyComponent::SetRotation(const float& rot)
+	{
+		GetOwner()->SetRotation(rot);
+	}
+
+	float RigidBodyComponent::GetRotation() const
+	{
+		return GetOwner()->GetTransform().rot;
+	}
+
 	void RigidBodyComponent::Read(const json::value_t& value){
 		PhysicsComponent::Read(value);
 
 		JSON_READ_NAME(value, "vel", m_vel);
 		JSON_READ_NAME(value, "ang_vel", m_angVel);
 	}
+
+
 
 }

@@ -12,7 +12,7 @@ namespace sr {
 	public:
 		void AddActor(std::unique_ptr<Actor> actor);
 
-		void ClearActors();
+		void ClearActors(bool force = false);
 
 		void Update(float dt, float width, float height);
 		void Draw(const class Renderer& renderer);

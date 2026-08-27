@@ -3,7 +3,7 @@
 #include "Math/MathUtils.h"
 #include "Engine.h"
 
-namespace nu
+namespace sr
 {
 	PhysicsBody::PhysicsBody(const Transform& transform, const Vector2& size, const PhysicsBodyDef& def, const Physics& physics) 
 	{
@@ -11,8 +11,8 @@ namespace nu
 
 		// set body definition
 		bodyDef.type = (def.isDynamic) ? b2_dynamicBody : b2_staticBody;
-		bodyDef.position = Physics::ToB2(Physics::PixelToWorld(transform.position));
-		bodyDef.rotation = b2MakeRot(transform.rotation * DegToRad);
+		bodyDef.position = Physics::ToB2(Physics::ScreenToWorld(transform.pos));
+		bodyDef.rotation = b2MakeRot(transform.rot * math::DEG_TO_RAD);
 		bodyDef.motionLocks.angularZ = def.constrainAngle;
 		bodyDef.gravityScale = def.gravityScale;
 		bodyDef.linearDamping = def.linearDamping;
@@ -34,7 +34,7 @@ namespace nu
 		shapeDef.enableContactEvents = true;
 
 		// create shape
-		b2Vec2 hsize = Physics::ToB2(Physics::PixelToWorld(size * transform.scale * 0.5f));
+		b2Vec2 hsize = Physics::ToB2(Physics::ScreenToWorld(size * transform.scale * 0.5f));
 		switch (def.shape)
 		{
 		case Shape::Box:
@@ -67,12 +67,12 @@ namespace nu
 
 	Vector2 PhysicsBody::GetPosition() const
 	{
-		return Physics::WorldToPixel(Physics::ToVector2(b2Body_GetPosition(m_bodyId)));
+		return Physics::WorldToScreen(Physics::ToVector2(b2Body_GetPosition(m_bodyId)));
 	}
 
 	void PhysicsBody::SetPosition(const Vector2& position) const
 	{
-		b2Vec2 b2Position = Physics::ToB2(Physics::PixelToWorld(position));
+		b2Vec2 b2Position = Physics::ToB2(Physics::ScreenToWorld(position));
 		b2Rot b2Rotation = b2Body_GetRotation(m_bodyId);
 
 		b2Body_SetTransform(
@@ -100,7 +100,7 @@ namespace nu
 
 	void PhysicsBody::ApplyForce(const Vector2& force) 
 	{
-		b2Body_ApplyForceToCenter(m_bodyId, Physics::ToB2(Physics::PixelToWorld(force)), true);
+		b2Body_ApplyForceToCenter(m_bodyId, Physics::ToB2(Physics::ScreenToWorld(force)), true);
 	}
 
 	void PhysicsBody::ApplyTorque(float radians) 
@@ -120,11 +120,11 @@ namespace nu
 
 	void PhysicsBody::SetVelocity(const Vector2& velocity) 
 	{
-		b2Body_SetLinearVelocity(m_bodyId, Physics::ToB2(Physics::PixelToWorld(velocity)));
+		b2Body_SetLinearVelocity(m_bodyId, Physics::ToB2(Physics::ScreenToWorld(velocity)));
 	}
 
 	Vector2 PhysicsBody::GetVelocity() 
 	{
-		return Physics::WorldToPixel(Physics::ToVector2(b2Body_GetLinearVelocity(m_bodyId)));
+		return Physics::WorldToScreen(Physics::ToVector2(b2Body_GetLinearVelocity(m_bodyId)));
 	}
 }
