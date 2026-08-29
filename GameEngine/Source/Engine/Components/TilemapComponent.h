@@ -9,6 +9,7 @@ namespace sr {
 
 		TilemapComponent() = default;
 		TilemapComponent(const TilemapComponent& o);
+
 		void Start() override;
 		void Draw(const Renderer& renderer) override;
 

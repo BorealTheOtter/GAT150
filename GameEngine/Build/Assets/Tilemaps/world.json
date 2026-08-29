@@ -41,7 +41,7 @@
                 {
                  "name":"texture_name",
                  "type":"string",
-                 "value":"Assets/Images/tilemap.png"
+                 "value":"Assets\\Images\\tilemap.png"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -88,7 +88,7 @@
                 {
                  "name":"texture_name",
                  "type":"string",
-                 "value":"Assets/Images/tilemap.png"
+                 "value":"Assets\\Images\\tilemap.png"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -99,7 +99,7 @@
  "nextlayerid":3,
  "nextobjectid":1,
  "orientation":"orthogonal",
- "renderorder":"right-down",
+ "renderorder":"left-down",
  "tiledversion":"1.12.2",
  "tileheight":16,
  "tilesets":[

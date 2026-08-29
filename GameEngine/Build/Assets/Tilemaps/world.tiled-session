@@ -1,8 +1,20 @@
 {
-    "activeFile": "",
+    "activeFile": "untitled.tmx",
     "expandedProjectPaths": [
     ],
     "fileStates": {
+        "Ground.tsx": {
+            "scaleInDock": 1.5,
+            "scaleInEditor": 1
+        },
+        "untitled.tmx": {
+            "scale": 1.5,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 127.66666666666666,
+                "y": 173.66666666666663
+            }
+        }
     },
     "last.exportedFilePath": "C:/Coursework/Q4/GAT150/GAT150/GameEngine/Build/Assets/Tilemaps",
     "last.imagePath": "C:/Coursework/Q4/GAT150/GAT150/GameEngine/Build/Assets/Images",
@@ -13,10 +25,14 @@
     "map.tileWidth": 16,
     "map.width": 25,
     "openFiles": [
+        "Ground.tsx",
+        "untitled.tmx"
     ],
     "project": "world.tiled-project",
     "property.type": "string",
     "recentFiles": [
+        "Ground.tsx",
+        "untitled.tmx"
     ],
     "tileset.lastUsedFormat": "tsx",
     "tileset.tileSize": {
