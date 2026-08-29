@@ -73,8 +73,11 @@ namespace sr {
 				Transform transform = GetOwner()->GetTransform();
 				Vector2 position = transform.pos + m_tilemap->GetTilePosition(layer, i) * transform.scale;
 
+				Transform n_transform = transform;
+				n_transform.pos = position;
+
 				// draw tile texture 
-				renderer.DrawTexture(*layer.texture, sourceRect, transform);
+				renderer.DrawTexture(*layer.texture, sourceRect, n_transform);
 			}
 
 		}

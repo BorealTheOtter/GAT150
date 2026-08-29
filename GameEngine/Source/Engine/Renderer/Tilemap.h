@@ -7,7 +7,8 @@ namespace sr {
 	public:
 		struct Layer
 		{
-			int width, height = 0;
+			int width = 0;
+			int height = 0;
 			bool hasCollision = false;
 			std::vector<int> data;
 			res_t<class Texture> texture;
@@ -20,7 +21,8 @@ namespace sr {
 		Vector2 GetTilePosition(const Layer& layer, int tileIndex);
 
 	private:
-		int m_tileWidth, m_tileHeight = 0;
+		int m_tileWidth = 0;
+		int m_tileHeight = 0;
 		std::vector<Layer> m_layers;
 	};
 }

@@ -70,7 +70,7 @@ namespace sr {
 		if (tileID == 0) return Rect();
 		
 		Vector2 texSize = layer.texture->GetSize();
-		int tilesPerRow = (int)(texSize.x / layer.width);
+		int tilesPerRow = (int)(texSize.x / m_tileWidth);
 
 		int column = (tileID - 1) % tilesPerRow;
 		int row = (tileID - 1) / tilesPerRow;
