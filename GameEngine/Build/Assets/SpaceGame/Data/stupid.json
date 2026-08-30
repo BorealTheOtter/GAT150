@@ -17,7 +17,7 @@
       "components": [
         {
           "type": "SpriteAnimationRendererComponent",
-          "tex_frames": "Assets/Animations/coin_idle.json",
+          "tex_frames": "Animations/coin_idle.json",
           "fps": 15.0,
           "loop": true
         }
@@ -40,7 +40,7 @@
       "components": [
         {
           "type": "TilemapComponent",
-          "tilemap_name": "Assets/Tilemaps/world.json"
+          "tilemap_name": "Tilemaps/world.json"
         }
       ]
     },
@@ -61,7 +61,7 @@
       "components": [
         {
           "type": "SpriteRendererComponent",
-          "texture": "Assets/Images/player.png"
+          "texture": "Images/player.png"
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -89,7 +89,7 @@
       "components": [
         {
           "type": "SpriteRendererComponent",
-          "texture": "Assets/Images/enemy.png"
+          "texture": "Images/enemy.png"
         },
         {
           "type": "Box2DPhysicsComponent",
@@ -117,7 +117,7 @@
       "components": [
         {
           "type": "SpriteRendererComponent",
-          "texture": "Assets/Images/bullet.png"
+          "texture": "Images/bullet.png"
         },
         {
           "type": "Box2DPhysicsComponent",

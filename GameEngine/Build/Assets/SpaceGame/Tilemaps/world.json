@@ -41,7 +41,7 @@
                 {
                  "name":"texture_name",
                  "type":"string",
-                 "value":"Assets\\Images\\tilemap.png"
+                 "value":"Images\\tilemap.png"
                 }],
          "type":"tilelayer",
          "visible":true,
@@ -88,7 +88,7 @@
                 {
                  "name":"texture_name",
                  "type":"string",
-                 "value":"Assets\\Images\\tilemap.png"
+                 "value":"Images\\tilemap.png"
                 }],
          "type":"tilelayer",
          "visible":true,

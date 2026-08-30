@@ -1,17 +1,20 @@
 #include "Engine.h"
-#include "SpaceGame.h"
-#include "Assets.h"
+#include "SpaceGame/SpaceGame.h"
+#include "SpriteGame/SpriteGame.h"
+#include "SpaceGame/Assets.h"
+#include <memory>
 
 using namespace sr;
 
 int main()
 {
+    SetWorkingDirectory("Assets");
 
     //INITIALIZE
     Engine::Get().Initialize();
     
-    SpaceGame game;
-    game.Initialize();
+    std::unique_ptr<Game> game = std::make_unique<SpaceGame>();
+    game->Initialize();
 
     //MAIN LOOP
     bool quit = false;
@@ -32,7 +35,7 @@ int main()
 
         float dt = Engine::Get().GetTime().GetDeltaTime();
 
-        game.Update(dt, Engine::Get().GetScreen().x, Engine::Get().GetScreen().y);
+        game->Update(dt, Engine::Get().GetScreen().x, Engine::Get().GetScreen().y);
             
         //RENDER
             Engine::Get().GetRenderer().SetColor(0.0f, 0.0f, 0.0f);
@@ -40,12 +43,13 @@ int main()
 
             Engine::Get().GetRenderer().SetColor(1.0f, 1.0f, 1.0f);
             
-            game.Draw(Engine::Get().GetRenderer());
+            game->Draw(Engine::Get().GetRenderer());
 
             Engine::Get().GetPS().Draw(Engine::Get().GetRenderer());
 
             Engine::Get().GetRenderer().Present();
         }
+    game.reset();
         //SHUTDOWN
     Engine::Get().Shutdown();
 

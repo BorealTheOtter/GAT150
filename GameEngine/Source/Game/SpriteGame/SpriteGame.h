@@ -3,7 +3,7 @@
 #include "Renderer/Text.h"
 
 
-class SpaceGame : public sr::Game {
+class SpriteGame : public sr::Game {
 
 public:
 	enum class GameState
@@ -16,8 +16,7 @@ public:
 		GameOver
 	};
 
-	SpaceGame() = default;
-	SpaceGame(sr::Scene* scene) : Game(scene) {};
+	SpriteGame() = default;
 
 	bool Initialize() override;
 

@@ -1,13 +1,15 @@
 #pragma once
 #include "Framework/Scene.h"
+#include <memory>
 
 namespace sr {
 
 	class Game
 	{
 	public:
-		Game() = default;
-		Game(Scene* scene) : m_scene{ scene } {};
+		Game();
+		virtual ~Game();
+		
 
 		virtual bool Initialize() { return true; }
 		virtual bool Shutdown() { return true; }
@@ -15,9 +17,9 @@ namespace sr {
 		virtual void Update(float dt, float width, float height);
 		virtual void Draw(const class Renderer& renderer);
 
-		void SetScene(Scene* scene) { m_scene = scene; }
+		void SetScene(std::unique_ptr<Scene> scene);
 	protected:
-		Scene* m_scene = nullptr;
+		std::unique_ptr<Scene> m_scene = nullptr;
 
 
 	};

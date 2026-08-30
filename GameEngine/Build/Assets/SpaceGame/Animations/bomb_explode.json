@@ -1,5 +1,5 @@
 {
-	"texture_name": "Assets/Textures/bomb.png",
+	"texture_name": "Images/bomb.png",
 	"columns": 8,
 	"rows": 3,
 	"start_frame": 0,

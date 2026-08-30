@@ -5,9 +5,6 @@
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
       <Extensions>cpp;c;cc;cxx;c++;cppm;ixx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
     </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{6e7b9649-b49a-4070-bf69-0ccc41e7c859}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Resource Files">
       <UniqueIdentifier>{af5219e3-9e5a-4595-befb-2fbcfb2e715f}</UniqueIdentifier>
     </Filter>
@@ -17,56 +14,68 @@
     <Filter Include="Resource Files\Tilemaps">
       <UniqueIdentifier>{1b17fa3c-9346-4f5b-b22e-6a4efcbd619b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Space Game">
+      <UniqueIdentifier>{aed7f8b7-1314-4cd3-819f-7cc6f35b0418}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Sprite Game">
+      <UniqueIdentifier>{093f8164-f69b-4e42-bfba-dba0223573e9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="SpaceGame\Assets.cpp">
+      <Filter>Space Game</Filter>
     </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="SpaceGame\Bullet.cpp">
+      <Filter>Space Game</Filter>
     </ClCompile>
-    <ClCompile Include="Bullet.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="SpaceGame\Enemy.cpp">
+      <Filter>Space Game</Filter>
     </ClCompile>
-    <ClCompile Include="Assets.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="SpaceGame\Player.cpp">
+      <Filter>Space Game</Filter>
     </ClCompile>
-    <ClCompile Include="SpaceGame.cpp">
-      <Filter>Source</Filter>
+    <ClCompile Include="SpaceGame\SpaceGame.cpp">
+      <Filter>Space Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SpriteGame\SpriteGame.cpp">
+      <Filter>Sprite Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Bullet.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Assets.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SpaceGame.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\Build\Assets\Data\stupid.json">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Animations\coin_idle.json">
-      <Filter>Resource Files\Animations</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Animations\bomb_explode.json">
-      <Filter>Resource Files\Animations</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\Tilemaps\world.json">
+    <None Include="..\..\Build\Assets\SpaceGame\Tilemaps\world.json">
       <Filter>Resource Files\Tilemaps</Filter>
     </None>
+    <None Include="..\..\Build\Assets\SpaceGame\Data\stupid.json">
+      <Filter>Resource Files</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\SpaceGame\Animations\bomb_explode.json">
+      <Filter>Resource Files\Animations</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\SpaceGame\Animations\coin_idle.json">
+      <Filter>Resource Files\Animations</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="SpaceGame\Assets.h">
+      <Filter>Space Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceGame\Bullet.h">
+      <Filter>Space Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceGame\Enemy.h">
+      <Filter>Space Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceGame\Player.h">
+      <Filter>Space Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SpaceGame\SpaceGame.h">
+      <Filter>Space Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteGame\SpriteGame.h">
+      <Filter>Sprite Game</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
