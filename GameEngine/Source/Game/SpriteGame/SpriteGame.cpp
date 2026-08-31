@@ -12,9 +12,7 @@ bool SpriteGame::Initialize()
 {
 	Game::Initialize();
 
-	//sr::Factory::Instance().Register<Player>("Player");
-	//sr::Factory::Instance().Register<Enemy>("Enemy");
-	//sr::Factory::Instance().Register<Bullet>("Bullet");
+	sr::SetWorkingDirectory("SpriteGame");
 
 	sr::SetSeed();
 

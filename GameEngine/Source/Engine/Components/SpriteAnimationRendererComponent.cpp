@@ -7,6 +7,18 @@
 namespace sr {
 	FACTORY_REGISTER(SpriteAnimationRendererComponent);
 
+	void SpriteAnimationRendererComponent::Start()
+	{
+		if (!m_TexFramesName.empty()) {
+			m_texFrames = Resources().Get<TexFrames>(m_TexFramesName, Engine::Get().GetRenderer());
+			if (m_texFrames) {
+				m_srcRect = m_texFrames->GetFrameRect(0);
+				m_size = m_srcRect.size;
+				m_texture = m_texFrames->GetTexture();
+			}
+		}
+	}
+
 	void SpriteAnimationRendererComponent::Update(float dt)
 	{
 		m_frameTimer += dt;
@@ -26,29 +38,18 @@ namespace sr {
 			m_frameTimer -= frameTime;
 		}
 
-		
-	}
-
-	void SpriteAnimationRendererComponent::Draw(const Renderer& renderer)
-	{
-		if (!m_texFrames) return;
-
-		auto transform = GetOwner()->GetTransform();
-
-		renderer.DrawTexture(*m_texFrames->GetTexture(), m_texFrames->GetFrameRect(m_frame), transform);
+		m_srcRect = m_texFrames->GetFrameRect(m_frame);
 	}
 	void SpriteAnimationRendererComponent::Read(const json::value_t& value)
 	{
-		RendererComponent::Read(value);
+		SpriteRendererComponent::Read(value);
 
 		sr::json::Read(value, "fps", m_fps, true);
 		JSON_READ_NAME(value, "loop", m_loop);
 
-		std::string texFrameName;
-		JSON_READ_NAME_REQ(value, "tex_frames", texFrameName);
 
-		if (!texFrameName.empty()) {
-			m_texFrames = Resources().Get<TexFrames>(texFrameName, Engine::Get().GetRenderer());
-		}
+		JSON_READ_NAME_REQ(value, "tex_frames", m_TexFramesName);
+
+
 	}
 }

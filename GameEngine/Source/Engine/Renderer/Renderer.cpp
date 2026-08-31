@@ -125,6 +125,7 @@ namespace sr
 
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated
+        SDL_SetTextureScaleMode(texture.m_texture, SDL_SCALEMODE_PIXELART);
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, t.rot, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 
@@ -144,6 +145,7 @@ namespace sr
         destRect.y = t.pos.y - (destRect.h * 0.5f);
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated
+        SDL_SetTextureScaleMode(texture.m_texture, SDL_SCALEMODE_PIXELART);
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, &sourceRect, &destRect, t.rot, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 

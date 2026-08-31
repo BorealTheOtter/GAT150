@@ -189,6 +189,7 @@
     <None Include="..\..\Build\Assets\SpaceGame\Animations\coin_idle.json" />
     <None Include="..\..\Build\Assets\SpaceGame\Data\stupid.json" />
     <None Include="..\..\Build\Assets\SpaceGame\Tilemaps\world.json" />
+    <None Include="..\..\Build\Assets\SpriteGame\Data\scene.json" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="SpaceGame\Assets.h" />

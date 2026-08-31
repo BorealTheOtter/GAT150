@@ -8,17 +8,29 @@
     <Filter Include="Resource Files">
       <UniqueIdentifier>{af5219e3-9e5a-4595-befb-2fbcfb2e715f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Resource Files\Animations">
-      <UniqueIdentifier>{f3b30eb5-3b35-4b30-a291-8a478ddef54d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Resource Files\Tilemaps">
-      <UniqueIdentifier>{1b17fa3c-9346-4f5b-b22e-6a4efcbd619b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Space Game">
       <UniqueIdentifier>{aed7f8b7-1314-4cd3-819f-7cc6f35b0418}</UniqueIdentifier>
     </Filter>
     <Filter Include="Sprite Game">
       <UniqueIdentifier>{093f8164-f69b-4e42-bfba-dba0223573e9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\SpaceGame">
+      <UniqueIdentifier>{09612e47-2134-454e-8ef9-f18bfb208de2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\SpaceGame\Animations">
+      <UniqueIdentifier>{f3b30eb5-3b35-4b30-a291-8a478ddef54d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\SpaceGame\Tilemaps">
+      <UniqueIdentifier>{1b17fa3c-9346-4f5b-b22e-6a4efcbd619b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\SpriteGame">
+      <UniqueIdentifier>{46417c35-f530-42fe-870d-99cc0438e4e5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\SpriteGame\Animations">
+      <UniqueIdentifier>{449ded6c-a075-4041-940f-09205093e4f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Resource Files\SpriteGame\Tilemaps">
+      <UniqueIdentifier>{0e407e61-cbab-4b11-8b01-a64ea10a7a01}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -46,16 +58,19 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Build\Assets\SpaceGame\Tilemaps\world.json">
-      <Filter>Resource Files\Tilemaps</Filter>
-    </None>
-    <None Include="..\..\Build\Assets\SpaceGame\Data\stupid.json">
-      <Filter>Resource Files</Filter>
+      <Filter>Resource Files\SpaceGame\Tilemaps</Filter>
     </None>
     <None Include="..\..\Build\Assets\SpaceGame\Animations\bomb_explode.json">
-      <Filter>Resource Files\Animations</Filter>
+      <Filter>Resource Files\SpaceGame\Animations</Filter>
     </None>
     <None Include="..\..\Build\Assets\SpaceGame\Animations\coin_idle.json">
-      <Filter>Resource Files\Animations</Filter>
+      <Filter>Resource Files\SpaceGame\Animations</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\SpaceGame\Data\stupid.json">
+      <Filter>Resource Files\SpaceGame</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\SpriteGame\Data\scene.json">
+      <Filter>Resource Files\SpriteGame</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>

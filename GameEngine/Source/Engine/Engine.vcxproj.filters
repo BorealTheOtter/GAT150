@@ -121,6 +121,9 @@
     <ClCompile Include="Components\TilemapComponent.cpp">
       <Filter>Components</Filter>
     </ClCompile>
+    <ClCompile Include="Components\SpriteAnimatorComponent.cpp">
+      <Filter>Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Components\RendererComponent.h">
@@ -253,6 +256,9 @@
       <Filter>Renderer</Filter>
     </ClInclude>
     <ClInclude Include="Components\TilemapComponent.h">
+      <Filter>Components</Filter>
+    </ClInclude>
+    <ClInclude Include="Components\SpriteAnimatorComponent.h">
       <Filter>Components</Filter>
     </ClInclude>
   </ItemGroup>

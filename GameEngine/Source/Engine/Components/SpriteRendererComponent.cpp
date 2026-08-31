@@ -6,10 +6,25 @@ namespace sr {
 
 	FACTORY_REGISTER(SpriteRendererComponent);
 
+	void SpriteRendererComponent::Start(){
+		if (!m_textureName.empty()) {
+			m_texture = Resources().Get<Texture>(m_textureName, Engine::Get().GetRenderer());
+			if (m_texture) {
+				m_size = m_texture->GetSize();
+			}
+		}
+	}
+
 	void SpriteRendererComponent::Draw(const Renderer& renderer){
 		
 		if (m_texture) {
-			renderer.DrawTexture(*m_texture, GetOwner()->GetTransform());
+			if (m_srcRect.size.w > 0 && m_srcRect.size.h > 0) {
+				renderer.DrawTexture(*m_texture, m_srcRect, GetOwner()->GetTransform(), m_flipH);
+			}
+			else {
+				renderer.DrawTexture(*m_texture, GetOwner()->GetTransform(), m_flipH);
+			}
+			
 		}
 	}
 
@@ -17,11 +32,7 @@ namespace sr {
 		
 		RendererComponent::Read(value);
 
-		std::string textureName;
-		JSON_READ_NAME(value, "texture", textureName);
-
-		if (!textureName.empty()) {
-			m_texture = Resources().Get<Texture>(textureName, Engine::Get().GetRenderer());
-		}
+		JSON_READ_NAME(value, "texture", m_textureName);
+		JSON_READ_NAME(value, "flip_h", m_flipH);
 	}
 }

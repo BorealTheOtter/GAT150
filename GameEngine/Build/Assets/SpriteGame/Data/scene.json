@@ -20,37 +20,37 @@
           "default_animation": "idle",
           "animations": [
             {
-              "name": "idle",
+              "name":  "idle",
               "tex_frames": "Animations/werewolf/werewolf_idle.json",
               "fps": 15.0,
               "loop": true
             },
             {
-              "name": "attack",
+              "name":  "attack",
               "tex_frames": "Animations/werewolf/werewolf_attack.json",
               "fps": 15.0,
               "loop": true
             },
             {
-              "name": "attack2",
+              "name":  "attack2",
               "tex_frames": "Animations/werewolf/werewolf_attack2.json",
               "fps": 15.0,
               "loop": true
             },
             {
-              "name": "run",
+              "name":  "run",
               "tex_frames": "Animations/werewolf/werewolf_run.json",
               "fps": 15.0,
               "loop": true
             },
             {
-              "name": "hurt",
+              "name":  "hurt",
               "tex_frames": "Animations/werewolf/werewolf_hurt.json",
               "fps": 15.0,
               "loop": true
             },
             {
-              "name": "death",
+              "name":  "death",
               "tex_frames": "Animations/werewolf/werewolf_death.json",
               "fps": 15.0,
               "loop": true
