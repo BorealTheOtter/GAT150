@@ -27,9 +27,11 @@ void Player::Update(float dt, const float width, const float height)
             physicsComponent->ApplyTorque(rotate);
 
             sr::Vector2 position = physicsComponent->GetPosition();
-            position.x = sr::math::Wrap(position.x,0.0f, width);
-            position.y = sr::math::Wrap(position.y,0.0f, height);
-            physicsComponent->SetPosition(position);
+            //position.x = sr::math::Wrap(position.x,0.0f, width);
+            //position.y = sr::math::Wrap(position.y,0.0f, height);
+            //physicsComponent->SetPosition(position);
+
+            sr::Engine::Get().GetRenderer().SetCamera(position);
         }
 
         if (sr::Engine::Get().GetInput().GetKeyPressed(SDL_SCANCODE_SPACE)) {

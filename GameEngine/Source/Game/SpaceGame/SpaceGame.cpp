@@ -100,7 +100,7 @@ void SpaceGame::Update(float dt, float width, float height){
 	Game::Update(dt, width, height);
 }
 
-void SpaceGame::Draw(const class sr::Renderer& renderer){
+void SpaceGame::Draw(class sr::Renderer& renderer){
 	switch (m_gameState)
 	{
 	case SpaceGame::GameState::Title:

@@ -21,7 +21,7 @@ public:
 	bool Initialize() override;
 
 	void Update(float dt, float width, float height) override;
-	void Draw(const class sr::Renderer& renderer) override;
+	void Draw(class sr::Renderer& renderer) override;
 
 	void OnPlayerDead();
 	void AddPoints(int points) { m_score += points; }

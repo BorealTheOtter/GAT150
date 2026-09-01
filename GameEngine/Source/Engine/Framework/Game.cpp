@@ -10,7 +10,7 @@ namespace sr {
 		m_scene->Update(dt, width, height);
 	}
 
-	void Game::Draw(const Renderer& renderer){
+	void Game::Draw(Renderer& renderer){
 		m_scene->Draw(renderer);
 	}
 	void Game::SetScene(std::unique_ptr<Scene> scene)

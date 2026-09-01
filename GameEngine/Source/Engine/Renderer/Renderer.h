@@ -37,12 +37,18 @@ namespace sr
 		
 		void DrawTexture(const class Texture& texture, Transform t, bool flipH = false) const;
 		void DrawTexture(const class Texture& texture,const struct Rect& source, Transform t, bool flipH = false) const;
+
+		void SetCamera(const Vector2& camera) { m_camera = camera; }
+		void EnableCamera(bool active = true) { m_camActive = active; }
 	private:
 		friend class Text;
 		friend class Texture;
 
 		SDL_Window* m_window = nullptr;
 		SDL_Renderer* m_renderer = nullptr;
+
+		Vector2 m_camera;
+		bool m_camActive = true;
 
 		int m_width = 0;
 		int m_height = 0;

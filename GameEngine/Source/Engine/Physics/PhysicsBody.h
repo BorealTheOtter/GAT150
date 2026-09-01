@@ -26,7 +26,7 @@ namespace sr
 
 			// material
 			float friction = 0.3f;
-			float restitution = 0.5f;
+			float restitution = 0.3f;
 			float density = 1.0f;
 
 			// shape

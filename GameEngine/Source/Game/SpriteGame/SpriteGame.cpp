@@ -1,6 +1,9 @@
 #include "SpriteGame.h"
 #include "Resources/ResourceManager.h"
 #include "Engine.h"
+#include "PlayerController.h"
+#include "EnemyController.h"
+
 
 #include "Serialization/Json.h"
 
@@ -18,7 +21,7 @@ bool SpriteGame::Initialize()
 
 	m_scene = std::make_unique<sr::Scene>();
 	m_scene->SetGame(this);
-	m_scene->Load("Data/stupid.json"); 
+	m_scene->Load("Data/scene.json"); 
 
 	
 
@@ -55,6 +58,7 @@ void SpriteGame::Update(float dt, float width, float height){
 		m_stateTimer -= dt;
 		if (m_stateTimer <= 0.0f) {
 			m_scene->ClearActors();
+			m_scene->Load("Data/level.json");
 			SpawnPlayer();
 			m_gameState = GameState::Game;
 		}
@@ -92,7 +96,10 @@ void SpriteGame::Update(float dt, float width, float height){
 	Game::Update(dt, width, height);
 }
 
-void SpriteGame::Draw(const class sr::Renderer& renderer){
+void SpriteGame::Draw(sr::Renderer& renderer){
+	
+	renderer.EnableCamera(false);
+
 	switch (m_gameState)
 	{
 	case SpriteGame::GameState::Title:
@@ -115,7 +122,7 @@ void SpriteGame::Draw(const class sr::Renderer& renderer){
 	default:
 		break;
 	}
-	
+	renderer.EnableCamera();
 	Game::Draw(renderer);
 }
 
@@ -127,18 +134,17 @@ void SpriteGame::OnPlayerDead()
 
 void SpriteGame::SpawnPlayer()
 {
-//	auto player = sr::Factory::Instance().Create<Player>("Proto_Player");
-//	player->SetPosition(sr::Vector2{ (float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2) });
-//
-//	m_scene->AddActor(std::move(player));
+auto player = sr::Factory::Instance().Create<PlayerController>("Proto_Player");
+player->SetPosition(sr::Vector2{ (float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2) });
+
+m_scene->AddActor(std::move(player));
 }
 
 void SpriteGame::SpawnEnemy()
 {
 
-	//auto enemy = sr::Factory::Instance().Create<Enemy>("Proto_Enemy");
-	//enemy->SetPosition(sr::Vector2{ sr::RandomFloat(sr::Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y) });
-	//enemy->SetSpeed(sr::RandomFloat(200.0f, 300.0f));
+	auto enemy = sr::Factory::Instance().Create<EnemyController>("Proto_Enemy");
+	enemy->SetPosition(sr::Vector2{ sr::RandomFloat(sr::Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y) });
 
-	//m_scene->AddActor(std::move(enemy));
+	m_scene->AddActor(std::move(enemy));
 }

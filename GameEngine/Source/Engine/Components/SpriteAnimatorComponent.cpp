@@ -38,6 +38,8 @@ namespace sr {
 	}
 
 	void SpriteAnimatorComponent::Play(const std::string& name){
+		if (EqualsIgnoreCase(name, m_spriteAnim.name)) return;
+		
 		auto iter = m_spriteAnimations.find(ToLower(name));
 		if (iter == m_spriteAnimations.end()) {
 			std::cerr << "could not find animation: " << name << std::endl;

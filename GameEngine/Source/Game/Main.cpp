@@ -13,7 +13,7 @@ int main()
     //INITIALIZE
     Engine::Get().Initialize();
     
-    std::unique_ptr<Game> game = std::make_unique<SpaceGame>();
+    std::unique_ptr<Game> game = std::make_unique<SpriteGame>();
     game->Initialize();
 
     //MAIN LOOP

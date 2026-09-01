@@ -15,7 +15,7 @@ namespace sr {
 		virtual bool Shutdown() { return true; }
 
 		virtual void Update(float dt, float width, float height);
-		virtual void Draw(const class Renderer& renderer);
+		virtual void Draw(class Renderer& renderer);
 
 		void SetScene(std::unique_ptr<Scene> scene);
 	protected:
