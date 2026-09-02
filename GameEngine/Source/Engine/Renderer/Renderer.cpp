@@ -115,7 +115,7 @@ namespace sr
         }
     }
 
-    void Renderer::DrawTexture(const Texture& texture, Transform t, bool flipH) const
+    void Renderer::DrawTexture(const Texture& texture, Transform t, bool flipH, const Vector2& origin) const
     {
         Vector2 size = texture.GetSize();
 
@@ -126,8 +126,8 @@ namespace sr
         destRect.w = size.x * t.scale;
         destRect.h = size.y * t.scale;
 
-        destRect.x = (t.pos.x - (cameraX - m_width * 0.5f)) - (destRect.w * 0.5f);
-        destRect.y = (t.pos.y - (cameraY - m_height * 0.5f)) - (destRect.h * 0.5f);
+        destRect.x = (t.pos.x - (cameraX - m_width * 0.5f)) - (destRect.w * origin.x);
+        destRect.y = (t.pos.y - (cameraY - m_height * 0.5f)) - (destRect.h * origin.y);
 
 
 
@@ -135,7 +135,7 @@ namespace sr
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, NULL, &destRect, t.rot, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     }
 
-    void Renderer::DrawTexture(const Texture& texture, const Rect& source, Transform t, bool flipH) const
+    void Renderer::DrawTexture(const Texture& texture, const Rect& source, Transform t, bool flipH, const Vector2& origin) const
     {
         float cameraX = (m_camActive) ? m_camera.x : 0;
         float cameraY = (m_camActive) ? m_camera.y : 0;
@@ -150,8 +150,8 @@ namespace sr
         destRect.w = source.size.w * t.scale;
         destRect.h = source.size.h * t.scale;
 
-        destRect.x = (t.pos.x - (cameraX - m_width * 0.5f)) - (destRect.w * 0.5f);
-        destRect.y = (t.pos.y - (cameraY - m_height * 0.5f)) - (destRect.h * 0.5f);
+        destRect.x = (t.pos.x - (cameraX - m_width * 0.5f)) - (destRect.w * origin.x);
+        destRect.y = (t.pos.y - (cameraY - m_height * 0.5f)) - (destRect.h * origin.y);
 
         // https://wiki.libsdl.org/SDL3/SDL_RenderTextureRotated
         SDL_RenderTextureRotated(m_renderer, texture.m_texture, &sourceRect, &destRect, t.rot, NULL, (flipH) ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);

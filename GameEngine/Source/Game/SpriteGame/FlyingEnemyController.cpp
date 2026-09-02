@@ -26,10 +26,12 @@ void FlyingEnemyController::Update(float dt, const float width, const float heig
 
 		sr::Vector2 dir = playerPos - pos;
 
-		if (playerPos.x < pos.x) dir = -1.0f;
-		else dir = 1.0f;
+		
 
-		m_physComponent->ApplyForce(dir.Normalize() * 50.0f);
+		//if (playerPos.x < pos.x) dir = -1.0f;
+		//else dir = 1.0f;
+		m_rendererComponent->SetFlipH(dir.x < 0.0f);
+		m_physComponent->ApplyForce(dir.Normalize() * 800.0f);
 		}
 
 	Actor::Update(dt, width, height);
@@ -40,5 +42,5 @@ void FlyingEnemyController::OnCollision(sr::Actor * o){
 }
 
 void FlyingEnemyController::Read(const sr::json::value_t & value){
-	Actor::Read(value);
+	CharacterBase::Read(value);
 }

@@ -67,6 +67,9 @@
     <ClCompile Include="SpriteGame\FlyingEnemyController.cpp">
       <Filter>Sprite Game</Filter>
     </ClCompile>
+    <ClCompile Include="SpriteGame\CharacterBase.cpp">
+      <Filter>Sprite Game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="..\..\Build\Assets\SpaceGame\Tilemaps\world.json">
@@ -132,6 +135,9 @@
       <Filter>Sprite Game</Filter>
     </ClInclude>
     <ClInclude Include="SpriteGame\FlyingEnemyController.h">
+      <Filter>Sprite Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SpriteGame\CharacterBase.h">
       <Filter>Sprite Game</Filter>
     </ClInclude>
   </ItemGroup>

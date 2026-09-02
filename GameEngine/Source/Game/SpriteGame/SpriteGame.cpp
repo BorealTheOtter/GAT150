@@ -3,6 +3,8 @@
 #include "Engine.h"
 #include "PlayerController.h"
 #include "EnemyController.h"
+#include "FlyingEnemyController.h"
+#include "Renderer/Texture.h"
 
 
 #include "Serialization/Json.h"
@@ -67,9 +69,9 @@ void SpriteGame::Update(float dt, float width, float height){
 	case SpriteGame::GameState::Game:
 		m_spawnTimer -= dt;
 		if (m_spawnTimer <= 0.0f) {
-			for (int i = 0; i < sr::RandomInt(1, 3); ++i) {
+			//for (int i = 0; i < sr::RandomInt(1, 3); ++i) {
 				SpawnEnemy();
-			}
+			//}
 			m_spawnTimer = m_spawnTime;
 			m_spawnTime -= 0.05f;
 		}
@@ -143,7 +145,9 @@ m_scene->AddActor(std::move(player));
 void SpriteGame::SpawnEnemy()
 {
 
-	auto enemy = sr::Factory::Instance().Create<EnemyController>("Proto_Enemy");
+		auto enemy = sr::Factory::Instance().Create<EnemyController>("Proto_Enemy");
+
+	
 	enemy->SetPosition(sr::Vector2{ sr::RandomFloat(sr::Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y) });
 
 	m_scene->AddActor(std::move(enemy));

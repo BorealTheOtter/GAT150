@@ -1,9 +1,9 @@
 #pragma once
-#include "Framework\Actor.h"
+#include "CharacterBase.h"
 
 namespace sr { class PhysicsComponent; class SpriteAnimatorComponent; }
 
-class FlyingEnemyController : public sr::Actor{
+class FlyingEnemyController : public CharacterBase {
 public:
 	CLASS_PROTOTYPE(FlyingEnemyController);
 

@@ -35,8 +35,8 @@ namespace sr
 		int GetWidth() const { return m_width; }
 		int GetHeight() const { return m_height; }
 		
-		void DrawTexture(const class Texture& texture, Transform t, bool flipH = false) const;
-		void DrawTexture(const class Texture& texture,const struct Rect& source, Transform t, bool flipH = false) const;
+		void DrawTexture(const class Texture& texture, Transform t, bool flipH = false, const Vector2& origin = {0.5f,0.5f}) const;
+		void DrawTexture(const class Texture& texture,const struct Rect& source, Transform t, bool flipH = false, const Vector2& origin = { 0.5f,0.5f }) const;
 
 		void SetCamera(const Vector2& camera) { m_camera = camera; }
 		void EnableCamera(bool active = true) { m_camActive = active; }

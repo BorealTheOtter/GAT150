@@ -12,6 +12,7 @@ namespace sr {
 		}
 	
 		Play(m_defaultAnimName);
+
 	}
 
 	void SpriteAnimatorComponent::Update(float dt) {

@@ -49,5 +49,5 @@ void EnemyController::OnCollision(sr::Actor * o){
 }
 
 void EnemyController::Read(const sr::json::value_t & value){
-	Actor::Read(value);
+	CharacterBase::Read(value);
 }

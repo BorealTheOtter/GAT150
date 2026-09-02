@@ -50,5 +50,5 @@ void PlayerController::OnCollision(sr::Actor * o){
 }
 
 void PlayerController::Read(const sr::json::value_t & value){
-	Actor::Read(value);
+	CharacterBase::Read(value);
 }

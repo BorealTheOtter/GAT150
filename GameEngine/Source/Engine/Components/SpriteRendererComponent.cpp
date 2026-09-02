@@ -34,5 +34,6 @@ namespace sr {
 
 		JSON_READ_NAME(value, "texture", m_textureName);
 		JSON_READ_NAME(value, "flip_h", m_flipH);
+		JSON_READ_NAME(value, "origin", m_origin);
 	}
 }
