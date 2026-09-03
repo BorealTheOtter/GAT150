@@ -27,7 +27,7 @@ Short description: A compact course project that demonstrates core game systems 
 ![Screenshot 2](screenshots/shot2.png)
 ## Building and running
 
-- Visual Studio (C#/C++ project with a .sln file):
+- Visual Studio:
   1. Open the solution file (.sln) in Visual Studio 2026.
   2. Set the desired startup project in Solution Explorer.
   3. Select the correct configuration (Debug/Release) and platform (x86/x64).
