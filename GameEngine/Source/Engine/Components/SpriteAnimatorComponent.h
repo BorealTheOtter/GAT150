@@ -21,6 +21,11 @@ namespace sr{
 		bool GetPause() const { return m_pause; };
 		void SetPause(bool pause = false) { m_pause = pause; }
 
+		unsigned int GetFrame() const { return m_frame; }
+		bool IsDone() const;
+
+		const std::string& GetAnimationName() const { return m_spriteAnim.name; }
+
 		void Read(const json::value_t& value) override;
 	private:
 		unsigned int m_frame = 0;

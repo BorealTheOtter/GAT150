@@ -36,8 +36,6 @@ namespace sr {
 		}
 
 		m_pendingActors.clear();
-
-		//UpdateCollisions();
 	}
 
 	void Scene::Draw(const Renderer& renderer)

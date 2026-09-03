@@ -36,7 +36,9 @@ namespace sr
 		}
 
 		for (auto component : m_components) {
-			component->Update(dt);
+			if (component->IsActive()) {
+				component->Update(dt);
+			}
 		}
 
 		//m_transform.pos += (m_velocity * dt);
@@ -60,7 +62,7 @@ namespace sr
 		for (auto component : m_components) {
 			//check if component is renderer component
 			auto rendererComponent = dynamic_cast<RendererComponent*>(component.get());
-			if (rendererComponent) {
+			if (rendererComponent && rendererComponent->IsActive()) {
 				//draw
 				rendererComponent->Draw(renderer);
 			}

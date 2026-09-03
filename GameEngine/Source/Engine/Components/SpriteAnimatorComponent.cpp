@@ -56,6 +56,11 @@ namespace sr {
 		m_srcRect = m_spriteAnim.texFrames->GetFrameRect(0);
 	}
 
+	bool SpriteAnimatorComponent::IsDone() const
+	{
+		return(m_frame == m_spriteAnim.texFrames->GetTotalFrames() - 1);
+	}
+
 	void SpriteAnimatorComponent::Read(const json::value_t & value){
 		SpriteRendererComponent::Read(value);
 

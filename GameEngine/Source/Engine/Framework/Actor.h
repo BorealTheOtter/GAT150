@@ -61,6 +61,8 @@ namespace sr
 		const std::string& GetName() const { return m_name; }
 		const std::string& GetTag() const { return m_tag; }
 
+		void SetTag(std::string tag) { m_tag = tag; }
+
 		Scene* GetScene() { return m_scene; }
 
 		float GetRadius() const;

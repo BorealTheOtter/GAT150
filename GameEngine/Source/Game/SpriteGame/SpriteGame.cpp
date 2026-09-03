@@ -101,7 +101,7 @@ void SpriteGame::Update(float dt, float width, float height){
 void SpriteGame::Draw(sr::Renderer& renderer){
 	
 	renderer.EnableCamera(false);
-
+	renderer.DrawTexture(*sr::Resources().Get<sr::Texture>("Images/bg03.png", sr::Engine::Get().GetRenderer()), sr::Transform());
 	switch (m_gameState)
 	{
 	case SpriteGame::GameState::Title:
@@ -145,10 +145,16 @@ m_scene->AddActor(std::move(player));
 void SpriteGame::SpawnEnemy()
 {
 
+	int enemyIndex = sr::RandomInt(2);
+	if (enemyIndex == 0) {
 		auto enemy = sr::Factory::Instance().Create<EnemyController>("Proto_Enemy");
-
+		enemy->SetPosition(sr::Vector2{ sr::RandomFloat(sr::Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y) });
+		m_scene->AddActor(std::move(enemy));
+	}
+	else {
+		auto enemy = sr::Factory::Instance().Create<FlyingEnemyController>("Proto_FlyingEnemy");
+		enemy->SetPosition(sr::Vector2{ sr::RandomFloat(sr::Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y) });
+		m_scene->AddActor(std::move(enemy));
+	}
 	
-	enemy->SetPosition(sr::Vector2{ sr::RandomFloat(sr::Engine::Get().GetScreen().x), sr::RandomFloat(sr::Engine::Get().GetScreen().y) });
-
-	m_scene->AddActor(std::move(enemy));
 }
