@@ -3,6 +3,8 @@
 #include "Components/PhysicsComponent.h"
 #include "Components/SpriteAnimatorComponent.h"
 
+#include "SpriteGame.h"
+
 #include "Damager.h"
 
 #include "Engine.h"
@@ -33,6 +35,18 @@ void EnemyController::Update(float dt, const float width, const float height){
 
 			if (playerPos.x < pos.x) dir = -1.0f;
 			else dir = 1.0f;
+
+			float distance = pos.Distance(playerPos);
+			if (distance < 40.0f) {
+				m_state = State::Attack;
+				m_rendererComponent->Play("attack");
+				auto damager = sr::Factory::Instance().Create<Damager>("Proto_Damager");
+				damager->SetDamage(2.0f);
+				damager->SetPosition(GetTransform().pos);
+				damager->SetTag("EnemyDamager");
+				m_scene->AddActor(std::move(damager));
+				sr::Engine::Get().GetAudio().PlaySound("shoot");
+			}
 		}
 
 
@@ -44,10 +58,18 @@ void EnemyController::Update(float dt, const float width, const float height){
 		else {
 			m_rendererComponent->Play("idle");
 		}
+		break;
 
+		
 	}
 	case CharacterBase::State::Attack:
+	{ 
+		if (m_rendererComponent->IsDone()) {
+			m_state = State::Move;
+			m_rendererComponent->Play("idle");
+		}
 		break;
+	}
 	case CharacterBase::State::Hit:
 	{
 		if (m_rendererComponent->IsDone()) {
@@ -58,6 +80,7 @@ void EnemyController::Update(float dt, const float width, const float height){
 	}
 	case CharacterBase::State::Death:
 		SetDestroyed();
+		((SpriteGame*)m_scene->GetGame())->AddPoints(500);
 		break;
 	default:
 		break;
@@ -71,7 +94,7 @@ CharacterBase::Update(dt, width, height);
 void EnemyController::OnCollision(sr::Actor * o){
 	if (sr::EqualsIgnoreCase(o->GetTag(), "PlayerDamager")) {
 
-
+		sr::Engine::Get().GetAudio().PlaySound("hit");
 		m_state = State::Hit;
 		m_rendererComponent->Play("hit");
 		Damager* damager = dynamic_cast<Damager*>(o);

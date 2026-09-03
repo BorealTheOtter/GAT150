@@ -3,6 +3,8 @@
 #include "Components/PhysicsComponent.h"
 #include "Components/SpriteAnimatorComponent.h"
 
+#include "SpriteGame.h"
+
 #include "Damager.h"
 
 #include "Engine.h"
@@ -40,6 +42,7 @@ void FlyingEnemyController::Update(float dt, const float width, const float heig
 				damager->SetPosition(GetTransform().pos);
 				damager->SetTag("EnemyDamager");
 				m_scene->AddActor(std::move(damager));
+				sr::Engine::Get().GetAudio().PlaySound("shoot");
 			}
 
 			m_rendererComponent->SetFlipH(dir.x < 0.0f);
@@ -75,7 +78,7 @@ void FlyingEnemyController::Update(float dt, const float width, const float heig
 void FlyingEnemyController::OnCollision(sr::Actor * o){
 	if (sr::EqualsIgnoreCase(o->GetTag(), "PlayerDamager")) {
 
-		
+		sr::Engine::Get().GetAudio().PlaySound("hit");
 		m_state = State::Hit;
 		m_rendererComponent->Play("hit");
 		Damager* damager = dynamic_cast<Damager*>(o);
@@ -88,6 +91,7 @@ void FlyingEnemyController::OnCollision(sr::Actor * o){
 
 		if (m_health <= 0) {
 			m_state = State::Death;
+			((SpriteGame*)m_scene->GetGame())->AddPoints(500);
 		}
 		o->SetDestroyed();
 	}

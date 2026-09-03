@@ -29,12 +29,14 @@ bool SpriteGame::Initialize()
 
 	sr::Engine::Get().GetAudio().AddSound("explosion", "Sounds/snd_badexplosion.wav");
 	sr::Engine::Get().GetAudio().AddSound("shoot", "Sounds/snd_bomb.wav");
+	sr::Engine::Get().GetAudio().AddSound("slash", "Sounds/snd_laz_c.wav");
+	sr::Engine::Get().GetAudio().AddSound("hit", "Sounds/snd_damage.wav");
 
 	m_menuFont = sr::Resources().GetWithID<sr::Font>("MenuFont","Fonts/gameFont.ttf", 64);
 	m_gameFont = sr::Resources().GetWithID<sr::Font>("GameFont","Fonts/gameFont.ttf", 32);
 
 	m_titleText = new sr::Text(m_menuFont);
-	m_titleText->Create(sr::Engine::Get().GetRenderer(), "Space Shooter", sr::Vector3{ 1.0f, 1.0f, 1.0f });
+	m_titleText->Create(sr::Engine::Get().GetRenderer(), "Survival", sr::Vector3{ 1.0f, 1.0f, 1.0f });
 	m_gameOverText = new sr::Text(m_menuFont);
 	m_gameOverText->Create(sr::Engine::Get().GetRenderer(), "Game Over", sr::Vector3{ 1.0f, 1.0f, 1.0f });
 
@@ -69,9 +71,9 @@ void SpriteGame::Update(float dt, float width, float height){
 	case SpriteGame::GameState::Game:
 		m_spawnTimer -= dt;
 		if (m_spawnTimer <= 0.0f) {
-			//for (int i = 0; i < sr::RandomInt(1, 3); ++i) {
+			for (int i = 0; i < sr::RandomInt(1, 3); ++i) {
 				SpawnEnemy();
-			//}
+			}
 			m_spawnTimer = m_spawnTime;
 			m_spawnTime -= 0.05f;
 		}
@@ -101,7 +103,10 @@ void SpriteGame::Update(float dt, float width, float height){
 void SpriteGame::Draw(sr::Renderer& renderer){
 	
 	renderer.EnableCamera(false);
-	renderer.DrawTexture(*sr::Resources().Get<sr::Texture>("Images/bg03.png", sr::Engine::Get().GetRenderer()), sr::Transform());
+	renderer.DrawTexture(*sr::Resources().Get<sr::Texture>("Images/Dungeon_Background_1.png", sr::Engine::Get().GetRenderer()), sr::Transform(sr::Vector2{0.0f}, 0.0f, 5.0));
+	renderer.EnableCamera();
+	Game::Draw(renderer);
+	renderer.EnableCamera(false);
 	switch (m_gameState)
 	{
 	case SpriteGame::GameState::Title:
@@ -125,7 +130,7 @@ void SpriteGame::Draw(sr::Renderer& renderer){
 		break;
 	}
 	renderer.EnableCamera();
-	Game::Draw(renderer);
+	
 }
 
 void SpriteGame::OnPlayerDead()
@@ -137,7 +142,7 @@ void SpriteGame::OnPlayerDead()
 void SpriteGame::SpawnPlayer()
 {
 auto player = sr::Factory::Instance().Create<PlayerController>("Proto_Player");
-player->SetPosition(sr::Vector2{ (float)(sr::Engine::Get().GetScreen().x / 2), (float)(sr::Engine::Get().GetScreen().y / 2) });
+player->SetPosition(sr::Vector2{ 2160.0f, 2160.0f });
 
 m_scene->AddActor(std::move(player));
 }

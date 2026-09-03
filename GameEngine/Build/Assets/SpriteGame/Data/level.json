@@ -17,7 +17,7 @@
       "components": [
         {
           "type": "TilemapComponent",
-          "tilemap_name": "Tilemaps/world.json"
+          "tilemap_name": "Tilemaps/dungeon.json"
         }
       ]
     },

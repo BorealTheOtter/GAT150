@@ -3,6 +3,8 @@
 #include "Components/PhysicsComponent.h"
 #include "Components/SpriteAnimatorComponent.h"
 
+#include "SpriteGame.h"
+
 #include "Damager.h"
 
 #include "Engine.h"
@@ -57,6 +59,7 @@ void PlayerController::Update(float dt, const float width, const float height){
 			damager->SetPosition(GetTransform().pos + sr::Vector2{(m_rendererComponent->GetFlipH()) ? -40.0f : 40.0f, -5.0f});
 			damager->SetTag("PlayerDamager");
 			m_scene->AddActor(std::move(damager));
+			sr::Engine::Get().GetAudio().PlaySound("slash");
 		}
 		break;
 	}
@@ -82,6 +85,7 @@ void PlayerController::Update(float dt, const float width, const float height){
 	{
 		if (m_rendererComponent->IsDone()) {
 			SetDestroyed();
+			((SpriteGame*)m_scene->GetGame())->SetGameState(SpriteGame::GameState::Dead);
 		}
 		break;
 	}
@@ -101,7 +105,7 @@ void PlayerController::Update(float dt, const float width, const float height){
 void PlayerController::OnCollision(sr::Actor * o){
 	if (sr::EqualsIgnoreCase(o->GetTag(), "EnemyDamager") && m_state != State::Death) {
 
-
+		sr::Engine::Get().GetAudio().PlaySound("hit");
 		m_state = State::Hit;
 		m_rendererComponent->Play("hurt");
 		Damager* damager = dynamic_cast<Damager*>(o);
